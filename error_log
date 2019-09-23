@@ -1,0 +1,3 @@
+[17-Sep-2019 01:33:41 UTC] PHP Warning:  strpos(): Empty needle in /home3/artiliam/public_html/wp-includes/functions.php on line 4360
+[17-Sep-2019 01:33:42 UTC] PHP Warning:  strpos(): Empty needle in /home3/artiliam/public_html/wp-includes/functions.php on line 4360
+[17-Sep-2019 01:33:42 UTC] mojo_plugin_activated
