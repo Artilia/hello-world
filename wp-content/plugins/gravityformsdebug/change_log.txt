@@ -1,0 +1,43 @@
+### 1.0.beta11
+- Added support for the Twenty Nineteen theme.
+
+
+### 1.0.beta10
+- Fixed an issue with the plugins page capability which caused notices on the installed plugins page.
+
+
+### 1.0.beta9
+- Added GPL to plugin header.
+- Added Text Domain and Domain Path to plugin header in case it is ever translated.
+- Updated Plugin URI and Author URI to use https.
+
+
+### 1.0.beta8
+- Fixed the add-on appearing in the Gravity Forms plugins list.
+
+
+### 1.0.beta7
+- Added support for the Twenty Seventeen theme.
+
+
+### 1.0.beta6
+- Fixed PayPal Standard Add-On not appearing in the Gravity Forms plugins list.
+
+
+### 1.0.beta5
+- Added support for the Twenty Sixteen theme.
+- Removed from Logging settings page.
+- Updated plugin filename in gf_mu_debug.php $always_load_plugins.
+- Updated plugin filename.
+
+
+### 1.0.beta4
+- Updated Gravity Forms plugin list to be populated via Gravity Manager.
+
+
+### 1.0.beta3
+- Added support for indicating which plugins are originally active on the WP install (outside of the debugger).
+
+
+### 1.0.beta2.1
+- Updated enabling conflict tester to install the mu plugin **before** redirecting back to the settings page; this allows the error checker to provide immediate feedback.

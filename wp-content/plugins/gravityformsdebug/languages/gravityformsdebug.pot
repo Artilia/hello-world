@@ -1,0 +1,82 @@
+# Copyright (C) 2019 rocketgenius
+# This file is distributed under the same license as the Gravity Forms Debug Add-On plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Gravity Forms Debug Add-On 1.0.beta11\n"
+"Report-Msgid-Bugs-To: https://gravityforms.com/support\n"
+"Last-Translator: Gravity Forms <support@gravityforms.com>\n"
+"Language-Team: Gravity Forms <support@gravityforms.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-06-14T17:35:13+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.2.0\n"
+"X-Domain: gravityformsdebug\n"
+
+#. Plugin Name of the plugin
+msgid "Gravity Forms Debug Add-On"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://www.gravityforms.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "Helps debug issues with Gravity Forms."
+msgstr ""
+
+#. Author of the plugin
+msgid "rocketgenius"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.rocketgenius.com"
+msgstr ""
+
+#: debug.php:169
+msgid "This subview does not exist."
+msgstr ""
+
+#: debug.php:184
+#: debug.php:830
+msgid "Conflict Tester"
+msgstr ""
+
+#: debug.php:280
+msgid "Conflict Tester Status"
+msgstr ""
+
+#: debug.php:283
+msgid "Disable Conflict Tester"
+msgstr ""
+
+#: debug.php:285
+msgid "Enable Conflict Tester"
+msgstr ""
+
+#: debug.php:299
+msgid "Default Theme"
+msgstr ""
+
+#: debug.php:331
+msgid "Plugins"
+msgstr ""
+
+#: debug.php:334
+msgid "Save Active Plugins"
+msgstr ""
+
+#: debug.php:353
+#: debug.php:392
+msgid "Select All"
+msgstr ""
+
+#: debug.php:355
+#: debug.php:394
+msgid "Denotes Orginally Active Plugin"
+msgstr ""
+
+#: debug.php:433
+msgid "Disable Link"
+msgstr ""
