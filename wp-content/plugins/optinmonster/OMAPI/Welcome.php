@@ -62,6 +62,25 @@ class OMAPI_Welcome {
 	 * @since 1.1.4.2
 	 */
 	public function __construct() {
+		// If we are not in admin or admin ajax, return.
+		if ( ! is_admin() ) {
+			return;
+		}
+
+		// If user is in admin ajax or doing cron, return.
+		if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX  ) || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
+			return;
+		}
+
+		// If user is not logged in, return.
+		if ( ! is_user_logged_in() ) {
+			return;
+		}
+
+		// If user cannot manage_options, return.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
 
 		// Set our object.
 		$this->set();
@@ -87,7 +106,7 @@ class OMAPI_Welcome {
 	public function set() {
 
 		self::$instance = $this;
-		$this->base 	= OMAPI::get_instance();
+		$this->base     = OMAPI::get_instance();
 		$this->view     = isset( $_GET['optin_monster_api_view'] ) ? stripslashes( $_GET['optin_monster_api_view'] ) : $this->base->get_view();
 
 	}
@@ -328,17 +347,17 @@ class OMAPI_Welcome {
 		}
 
 		wp_add_dashboard_widget(
-        	'optin_monster_db_widget',
+			'optin_monster_db_widget',
 			__( 'Please Connect OptinMonster', 'optin-monster-api' ),
 			array( $this, 'dashboard_widget_callback' )
-        );
+		);
 
-        global $wp_meta_boxes;
-	 	$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
-	 	$example_widget_backup = array( 'optin_monster_db_widget' => $normal_dashboard['optin_monster_db_widget'] );
-	 	unset( $normal_dashboard['optin_monster_db_widget'] );
-	 	$sorted_dashboard = array_merge( $example_widget_backup, $normal_dashboard );
-	 	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+		global $wp_meta_boxes;
+		$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+		$example_widget_backup = array( 'optin_monster_db_widget' => $normal_dashboard['optin_monster_db_widget'] );
+		unset( $normal_dashboard['optin_monster_db_widget'] );
+		$sorted_dashboard = array_merge( $example_widget_backup, $normal_dashboard );
+		$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 	}
 
 	/**

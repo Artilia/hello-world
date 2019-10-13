@@ -4,7 +4,7 @@ Tags: credit card, stripe, apple pay, payment request, google pay, sepa, sofort,
 Requires at least: 4.4
 Tested up to: 5.2.2
 Requires PHP: 5.6
-Stable tag: 4.2.4
+Stable tag: 4.2.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Attributions: thorsten-stripe
@@ -113,7 +113,10 @@ If you get stuck, you can ask for help in the Plugin Forum.
 
 == Changelog ==
 
-= 4.x.x - 2019-09-18 =
+= 4.2.5 - 2019-10-02 =
+* Fix - WooCommerce Subscriptions that use only the Stripe customer ID can again be renewed
+
+= 4.2.4 - 2019-09-18 =
 * Fix - Unclear error message when email address not completely filled in.
 * Fix - Add payment request button compatibility with variable subscriptions
 * Tweak - Do not show payment request button for shippable trial subscription products

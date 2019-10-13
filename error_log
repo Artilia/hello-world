@@ -1,3 +1,50 @@
 [17-Sep-2019 01:33:41 UTC] PHP Warning:  strpos(): Empty needle in /home3/artiliam/public_html/wp-includes/functions.php on line 4360
 [17-Sep-2019 01:33:42 UTC] PHP Warning:  strpos(): Empty needle in /home3/artiliam/public_html/wp-includes/functions.php on line 4360
 [17-Sep-2019 01:33:42 UTC] mojo_plugin_activated
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Warning:  call_user_func() expects parameter 1 to be a valid callback, class 'Automattic\Jetpack\Sync\Functions' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/vendor/automattic/jetpack-sync/src/modules/Callables.php on line 213
+[01-Oct-2019 13:54:22 UTC] PHP Fatal error:  Uncaught Error: Class 'Automattic\Jetpack\Tracking' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/src/Tracking.php:18
+Stack trace:
+#0 /home3/artiliam/public_html/wp-includes/class-wp-hook.php(286): Automattic\Jetpack\Plugin\Tracking->init('')
+#1 /home3/artiliam/public_html/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#2 /home3/artiliam/public_html/wp-includes/plugin.php(465): WP_Hook->do_action(Array)
+#3 /home3/artiliam/public_html/wp-settings.php(525): do_action('init')
+#4 /home3/artiliam/public_html/wp-config.php(96): require_once('/home3/artiliam...')
+#5 /home3/artiliam/public_html/wp-load.php(37): require_once('/home3/artiliam...')
+#6 /home3/artiliam/public_html/wp-blog-header.php(13): require_once('/home3/artiliam...')
+#7 /home3/artiliam/public_html/index.php(17): require('/home3/artiliam...')
+#8 {main}
+  thrown in /home3/artiliam/public_html/wp-content/plugins/jetpack/src/Tracking.php on line 18
+[01-Oct-2019 13:54:22 UTC] PHP Fatal error:  Uncaught Error: Class 'Automattic\Jetpack\Assets' not found in /home3/artiliam/public_html/wp-content/plugins/jetpack/modules/custom-css/custom-css-4.7.php:65
+Stack trace:
+#0 /home3/artiliam/public_html/wp-includes/class-wp-hook.php(286): Jetpack_Custom_CSS_Enhancements::init('')
+#1 /home3/artiliam/public_html/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(Object(Jetpack_Portfolio), Array)
+#2 /home3/artiliam/public_html/wp-includes/plugin.php(465): WP_Hook->do_action(Array)
+#3 /home3/artiliam/public_html/wp-settings.php(525): do_action('init')
+#4 /home3/artiliam/public_html/wp-config.php(96): require_once('/home3/artiliam...')
+#5 /home3/artiliam/public_html/wp-load.php(37): require_once('/home3/artiliam...')
+#6 /home3/artiliam/public_html/wp-blog-header.php(13): require_once('/home3/artiliam...')
+#7 /home3/artiliam/public_html/index.php(17): require('/home3/artiliam...')
+#8 {main}
+  thrown in /home3/artiliam/public_html/wp-content/plugins/jetpack/modules/custom-css/custom-css-4.7.php on line 65
+[01-Oct-2019 13:54:54 UTC] PHP Notice:  Trying to get property of non-object in /home3/artiliam/public_html/wp-content/mu-plugins/endurance-page-cache.php on line 394
+[01-Oct-2019 13:54:54 UTC] PHP Notice:  Trying to get property of non-object in /home3/artiliam/public_html/wp-content/mu-plugins/endurance-page-cache.php on line 394
+[01-Oct-2019 13:54:55 UTC] PHP Notice:  Trying to get property of non-object in /home3/artiliam/public_html/wp-content/mu-plugins/endurance-page-cache.php on line 394

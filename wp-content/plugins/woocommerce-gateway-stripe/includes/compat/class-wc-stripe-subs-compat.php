@@ -284,9 +284,8 @@ class WC_Stripe_Subs_Compat extends WC_Gateway_Stripe {
 		$full_request = $this->generate_payment_request( $order, $prepared_source );
 
 		$request = array(
-			'source'               => $prepared_source->source,
 			'amount'               => WC_Stripe_Helper::get_stripe_amount( $amount, $full_request['currency'] ),
-			'currency'             => strtolower( WC_Stripe_Helper::is_wc_lt( '3.0' ) ? $order->get_order_currency() : $order->get_currency() ),
+			'currency'             => $full_request['currency'],
 			'description'          => $full_request['description'],
 			'metadata'             => $full_request['metadata'],
 			'payment_method_types' => array(
@@ -301,8 +300,12 @@ class WC_Stripe_Subs_Compat extends WC_Gateway_Stripe {
 			$request['statement_descriptor'] = $full_request['statement_descriptor'];
 		}
 
-		if ( $prepared_source->customer ) {
-			$request['customer'] = $prepared_source->customer;
+		if ( isset( $full_request['customer'] ) ) {
+			$request['customer'] = $full_request['customer'];
+		}
+
+		if ( isset( $full_request['source'] ) ) {
+			$request['source'] = $full_request['source'];
 		}
 
 		$intent = WC_Stripe_API::request( $request, 'payment_intents' );
