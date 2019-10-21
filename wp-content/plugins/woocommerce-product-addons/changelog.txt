@@ -1,5 +1,8 @@
 *** Product Addons Changelog ***
 
+2019-10-15 - version 3.0.17
+* Fix - Display of prices when using WooCommerce Bookings Accommodations.
+
 2019-09-24 - version 3.0.16
 * Fix - Image swatch double tap required on iOS.
 

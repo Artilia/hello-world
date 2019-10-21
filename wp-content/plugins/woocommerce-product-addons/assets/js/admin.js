@@ -256,9 +256,9 @@ jQuery( function( $ ) {
 							parent.find( '.wc-pao-addon-min-max' ).removeClass( 'hide' ).addClass( 'show' );
 
 							if ( 'email' === parent.find( '.wc-pao-addon-restrictions-select' ).val() ) {
-								parent.find( '.wc-pao-addon-min-max' ).removeClass( 'show' ).addClass( 'hide' );	
+								parent.find( '.wc-pao-addon-min-max' ).removeClass( 'show' ).addClass( 'hide' );
 							}
-							break;		
+							break;
 						case 'custom_textarea':
 							restrictionName = wc_pao_params.i18n.limit_character_length;
 							parent.find( '.wc-pao-addon-min-max' ).removeClass( 'hide' ).addClass( 'show' );
@@ -285,7 +285,7 @@ jQuery( function( $ ) {
 							parent.find( '.wc-pao-addon-content-non-option-rows' ).removeClass( 'hide' ).addClass( 'show' );
 							restrictionName = wc_pao_params.i18n.restrictions;
 							parent.find( '.wc-pao-addon-restrictions-container' ).removeClass( 'show' ).addClass( 'hide' );
-							break;					
+							break;
 					}
 
 					parent.find( '.wc-pao-addon-restriction-name' ).html( restrictionName );
@@ -351,6 +351,11 @@ jQuery( function( $ ) {
 
 						wc_pao_admin.refresh();
 						wc_pao_admin.runOptionSortable();
+
+						// Show/hide special classes which may be in field html.
+						var product_type    = $( 'select#product-type' ).val();
+						$( '.hide_if_' + product_type ).hide();
+						$( '.show_if_' + product_type ).show();
 					} );
 
 					return false;
@@ -365,7 +370,7 @@ jQuery( function( $ ) {
 						$( addon ).find( 'input' ).val( '' );
 						$( addon ).remove();
 					}
-					
+
 					$( '.wc-pao-addons .wc-pao-addon' ).each( function( index, el ) {
 						var this_index = index;
 
@@ -411,7 +416,7 @@ jQuery( function( $ ) {
 						element.removeClass( 'open' ).addClass( 'closed' );
 					} else {
 						element.removeClass( 'closed' ).addClass( 'open' );
-					}				
+					}
 				} )
 				.on( 'click', '.wc-pao-addon-description-enable', function() {
 					if ( $( this ).is( ':checked' ) ) {
@@ -456,7 +461,7 @@ jQuery( function( $ ) {
 						var selection = mediaFrame.state().get( 'selection' );
 
 						selection.map( function( attachment ) {
-		
+
 							attachment = attachment.toJSON();
 
 							if ( attachment.id ) {
@@ -472,11 +477,11 @@ jQuery( function( $ ) {
 					} );
 
 					// Open the modal frame.
-					mediaFrame.open();				
+					mediaFrame.open();
 				} )
 				.on( 'click', '.wc-pao-addon-image-swatch', function( e ) {
 					e.preventDefault();
-					
+
 					var parent = $( this ).parent();
 
 					parent.find( '.wc-pao-addon-option-image-id' ).val( '' );
@@ -500,7 +505,7 @@ jQuery( function( $ ) {
 						parent.find( '.wc-pao-addon-min-max' ).removeClass( 'show' ).addClass( 'hide' );
 					} else {
 						parent.find( '.wc-pao-addon-min-max' ).removeClass( 'hide' ).addClass( 'show' );
-					}				
+					}
 				} )
 				.on( 'click', '.wc-pao-addon-adjust-price', function() {
 					if ( $( this ).is( ':checked' ) ) {

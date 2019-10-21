@@ -30,6 +30,15 @@ class WC_Stripe_Subs_Compat extends WC_Gateway_Stripe {
 			add_filter( 'woocommerce_subscription_payment_meta', array( $this, 'add_subscription_payment_meta' ), 10, 2 );
 			add_filter( 'woocommerce_subscription_validate_payment_meta', array( $this, 'validate_subscription_payment_meta' ), 10, 2 );
 			add_filter( 'wc_stripe_display_save_payment_method_checkbox', array( $this, 'maybe_hide_save_checkbox' ) );
+
+			/*
+			 * WC subscriptions hooks into the "template_redirect" hook with priority 100.
+			 * If the screen is "Pay for order" and the order is a subscription renewal, it redirects to the plain checkout.
+			 * See: https://github.com/woocommerce/woocommerce-subscriptions/blob/99a75687e109b64cbc07af6e5518458a6305f366/includes/class-wcs-cart-renewal.php#L165
+			 * If we are in the "You just need to authorize SCA" flow, we don't want that redirection to happen.
+			 */
+			add_action( 'template_redirect', array( $this, 'remove_order_pay_var' ), 99 );
+			add_action( 'template_redirect', array( $this, 'restore_order_pay_var' ), 101 );
 		}
 	}
 
@@ -124,19 +133,9 @@ class WC_Stripe_Subs_Compat extends WC_Gateway_Stripe {
 		try {
 			$subscription    = wc_get_order( $order_id );
 			$prepared_source = $this->prepare_source( get_current_user_id(), true );
-			$source_object   = $prepared_source->source_object;
 
-			// Check if we don't allow prepaid credit cards.
-			if ( ! apply_filters( 'wc_stripe_allow_prepaid_card', true ) && $this->is_prepaid_card( $source_object ) ) {
-				$localized_message = __( 'Sorry, we\'re not accepting prepaid cards at this time. Your credit card has not been charge. Please try with alternative payment method.', 'woocommerce-gateway-stripe' );
-				throw new WC_Stripe_Exception( print_r( $source_object, true ), $localized_message );
-			}
-
-			if ( empty( $prepared_source->source ) ) {
-				$localized_message = __( 'Payment processing failed. Please retry.', 'woocommerce-gateway-stripe' );
-				throw new WC_Stripe_Exception( print_r( $prepared_source, true ), $localized_message );
-			}
-
+			$this->maybe_disallow_prepaid_card( $prepared_source );
+			$this->check_source( $prepared_source );
 			$this->save_source_to_order( $subscription, $prepared_source );
 
 			do_action( 'wc_stripe_change_subs_payment_method_success', $prepared_source->source, $prepared_source );
@@ -170,6 +169,28 @@ class WC_Stripe_Subs_Compat extends WC_Gateway_Stripe {
 	}
 
 	/**
+	 * Overloads WC_Stripe_Payment_Gateway::generate_create_intent_request() in order to
+	 * include additional flags, used when setting payment intents up for off-session usage.
+	 *
+	 * @param WC_Order $order           The order that is being paid for.
+	 * @param object   $prepared_source The source that is used for the payment.
+	 * @return array                    The arguments for the request.
+	 */
+	public function generate_create_intent_request( $order, $prepared_source ) {
+		$request = parent::generate_create_intent_request( $order, $prepared_source );
+
+		// Non-subscription orders do not need any additional parameters.
+		if ( ! $this->has_subscription( $order ) ) {
+			return $request;
+		}
+
+		// Let Stripe know that the payment should be prepared for future usage.
+		$request['setup_future_usage'] = 'off_session';
+
+		return $request;
+	}
+
+	/**
 	 * Scheduled_subscription_payment function.
 	 *
 	 * @param $amount_to_charge float The amount to charge.
@@ -199,6 +220,11 @@ class WC_Stripe_Subs_Compat extends WC_Gateway_Stripe {
 
 			$order_id = WC_Stripe_Helper::is_wc_lt( '3.0' ) ? $renewal_order->id : $renewal_order->get_id();
 
+			// Check for an existing intent, which is associated with the order.
+			if ( $this->has_authentication_already_failed( $renewal_order ) ) {
+				return;
+			}
+
 			// Get source from order
 			$prepared_source = $this->prepare_order_source( $renewal_order );
 			$source_object   = $prepared_source->source_object;
@@ -221,9 +247,13 @@ class WC_Stripe_Subs_Compat extends WC_Gateway_Stripe {
 				$prepared_source->source = '';
 			}
 
-			$response = $this->create_and_confirm_intent_for_renewal( $amount, $renewal_order, $prepared_source );
+			$response = $this->create_and_confirm_intent_for_off_session( $renewal_order, $prepared_source, $amount );
 
-			if ( ! empty( $response->error ) ) {
+			$is_authentication_required = $this->is_authentication_required_for_payment( $response );
+
+			// It's only a failed payment if it's an error and it's not of the type 'authentication_required'.
+			// If it's 'authentication_required', then we should email the user and ask them to authenticate.
+			if ( ! empty( $response->error ) && ! $is_authentication_required ) {
 				// We want to retry.
 				if ( $this->is_retryable_error( $response->error ) ) {
 					if ( $retry ) {
@@ -257,10 +287,29 @@ class WC_Stripe_Subs_Compat extends WC_Gateway_Stripe {
 				throw new WC_Stripe_Exception( print_r( $response, true ), $localized_message );
 			}
 
-			do_action( 'wc_gateway_stripe_process_payment', $response, $renewal_order );
+			// Either the charge was successfully captured, or it requires further authentication.
 
+			if ( $is_authentication_required ) {
+				do_action( 'wc_gateway_stripe_process_payment_authentication_required', $renewal_order, $response );
 
-			$this->process_response( end( $response->charges->data ), $renewal_order );
+				$error_message = __( 'This transaction requires authentication.', 'woocommerce-gateway-stripe' );
+				$renewal_order->add_order_note( $error_message );
+
+				$charge = end( $response->error->payment_intent->charges->data );
+				$id = $charge->id;
+				$order_id = WC_Stripe_Helper::is_wc_lt( '3.0' ) ? $renewal_order->id : $renewal_order->get_id();
+
+				WC_Stripe_Helper::is_wc_lt( '3.0' ) ? update_post_meta( $order_id, '_transaction_id', $id ) : $renewal_order->set_transaction_id( $id );
+				$renewal_order->update_status( 'failed', sprintf( __( 'Stripe charge awaiting authentication by user: %s.', 'woocommerce-gateway-stripe' ), $id ) );
+				if ( is_callable( array( $renewal_order, 'save' ) ) ) {
+					$renewal_order->save();
+				}
+			} else {
+				// The charge was successfully captured
+				do_action( 'wc_gateway_stripe_process_payment', $response, $renewal_order );
+
+				$this->process_response( end( $response->charges->data ), $renewal_order );
+			}
 		} catch ( WC_Stripe_Exception $e ) {
 			WC_Stripe_Logger::log( 'Error: ' . $e->getMessage() );
 
@@ -269,57 +318,6 @@ class WC_Stripe_Subs_Compat extends WC_Gateway_Stripe {
 			/* translators: error message */
 			$renewal_order->update_status( 'failed' );
 		}
-	}
-
-	/**
-	 * Create and confirm a new PaymentIntent.
-	 *
-	 * @param float    $amount          The amount to charge.
-	 * @param WC_Order $order           The order that is being paid for.
-	 * @param object   $prepared_source The source that is used for the payment.
-	 * @return object                   An intent or an error.
-	 */
-	public function create_and_confirm_intent_for_renewal( $amount, $order, $prepared_source ) {
-		// The request for a charge contains metadata for the intent.
-		$full_request = $this->generate_payment_request( $order, $prepared_source );
-
-		$request = array(
-			'amount'               => WC_Stripe_Helper::get_stripe_amount( $amount, $full_request['currency'] ),
-			'currency'             => $full_request['currency'],
-			'description'          => $full_request['description'],
-			'metadata'             => $full_request['metadata'],
-			'payment_method_types' => array(
-				'card',
-			),
-			'off_session'          => 'true',
-			'confirm'              => 'true',
-			'confirmation_method'  => 'automatic',
-		);
-
-		if ( isset( $full_request['statement_descriptor'] ) ) {
-			$request['statement_descriptor'] = $full_request['statement_descriptor'];
-		}
-
-		if ( isset( $full_request['customer'] ) ) {
-			$request['customer'] = $full_request['customer'];
-		}
-
-		if ( isset( $full_request['source'] ) ) {
-			$request['source'] = $full_request['source'];
-		}
-
-		$intent = WC_Stripe_API::request( $request, 'payment_intents' );
-		if ( ! empty( $intent->error ) ) {
-			return $intent;
-		}
-
-		$order_id = WC_Stripe_Helper::is_wc_lt( '3.0' ) ? $order->id : $order->get_id();
-		WC_Stripe_Logger::log( "Stripe PaymentIntent $intent->id initiated for order $order_id" );
-
-		// Save the intent ID to the order.
-		$this->save_intent_to_order( $order, $intent );
-
-		return $intent;
 	}
 
 	/**
@@ -550,5 +548,63 @@ class WC_Stripe_Subs_Compat extends WC_Gateway_Stripe {
 		}
 
 		return $payment_method_to_display;
+	}
+
+	/**
+	 * If this is the "Pass the SCA challenge" flow, remove a variable that is checked by WC Subscriptions
+	 * so WC Subscriptions doesn't redirect to the checkout
+	 */
+	public function remove_order_pay_var() {
+		global $wp;
+		if ( isset( $_GET['wc-stripe-confirmation'] ) ) {
+			$this->order_pay_var = $wp->query_vars['order-pay'];
+			$wp->query_vars['order-pay'] = null;
+		}
+	}
+
+	/**
+	 * Restore the variable that was removed in remove_order_pay_var()
+	 */
+	public function restore_order_pay_var() {
+		global $wp;
+		if ( isset( $this->order_pay_var ) ) {
+			$wp->query_vars['order-pay'] = $this->order_pay_var;
+		}
+	}
+
+	/**
+	 * Checks if a renewal already failed because a manual authentication is required.
+	 *
+	 * @param WC_Order $renewal_order The renewal order.
+	 * @return boolean
+	 */
+	public function has_authentication_already_failed( $renewal_order ) {
+		$existing_intent = $this->get_intent_from_order( $renewal_order );
+
+		if (
+			! $existing_intent
+			|| 'requires_payment_method' !== $existing_intent->status
+			|| empty( $existing_intent->last_payment_error )
+			|| 'authentication_required' !== $existing_intent->last_payment_error->code
+		) {
+			return false;
+		}
+
+		// Make sure all emails are instantiated.
+		WC_Emails::instance();
+
+		/**
+		 * A payment attempt failed because SCA authentication is required.
+		 *
+		 * @param WC_Order $renewal_order The order that is being renewed.
+		 */
+		do_action( 'wc_gateway_stripe_process_payment_authentication_required', $renewal_order );
+
+		// Fail the payment attempt (order would be currently pending because of retry rules).
+		$charge    = end( $existing_intent->charges->data );
+		$charge_id = $charge->id;
+		$renewal_order->update_status( 'failed', sprintf( __( 'Stripe charge awaiting authentication by user: %s.', 'woocommerce-gateway-stripe' ), $charge_id ) );
+
+		return true;
 	}
 }

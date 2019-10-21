@@ -249,7 +249,7 @@ jQuery( function( $ ) {
 						}
 
 						// Bookings compat.
-						if ( 'booking' === product_type && woocommerce_addons_params.is_bookings ) {
+						if ( ( 'booking' === product_type || 'accommodation-booking' === product_type ) && woocommerce_addons_params.is_bookings ) {
 							qty = 0;
 
 							// Duration field.
