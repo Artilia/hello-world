@@ -2,9 +2,9 @@
 Contributors: optinmonster, griffinjt, smub
 Tags: popup, popup plugin, wordpress popup plugin, wordpress popup, lightbox popup, email list, mailchimp, aweber, campaign monitor, constant contact, exit-intent, madmimi, infusionsoft, getresponse, hubspot, marketo, activecampaign, pardot, totalsend, emma, icontact, mailerlite, mailpoet, google analytics, pop over, optin forms, subscribers, wordpress popup form, lightbox, wordpress popups, popups, lightbox popups, optin form, wordpress optin form, sidebar optin form, sidebar optin, sidebar form, wordpress overlay popup, wordpress lightbox optin, wordpress lightbox optin form, after post optin form, wordpress after post optin form, after post optin form plugin, lightbox popup plugin, wordpress popup solution, exit intent, exit-intent, optinmonster, optin monster, optin-monster, mobile popup, mobile popups, mobile optin forms, mobile optins, lightbox optins, wordpress mobile popup, wordpress mobile popups, wordpress mobile optin forms, wordpress lightbox optins, lead gen, lead generation, wordpress lead generation, lead generation wordpress, wordpress lead gen, fullscreen, welcome gate, interstitial, pop-up, pop-ups, pop up, pop up
 Requires at least: 4.7.0
-Tested up to: 5.2.2
+Tested up to: 5.3.0
 Requires PHP: 5.3
-Stable tag: 1.8.3
+Stable tag: 1.8.4
 License: GNU General Public License v2.0 or later
 
 OptinMonster is the best WordPress popup plugin, helping you grow your email list and sales with email popups, exit intent popups, floating bars and more!
@@ -269,6 +269,9 @@ Thomas Griffin
 > Chris Lema - VP of Product at Liquid Web
 
 == Changelog ==
+
+= 1.8.4 =
+* Minor update: Added a new filter for action links.
 
 = 1.8.3 =
 * Improved logic to prevent welcome screen from showing in the wrong context.

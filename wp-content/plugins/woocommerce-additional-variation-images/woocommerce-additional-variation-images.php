@@ -3,14 +3,14 @@
  * Plugin Name: WooCommerce Additional Variation Images
  * Plugin URI: https://woocommerce.com/products/woocommerce-additional-variation-images/
  * Description: A WooCommerce plugin/extension that adds ability for shop/store owners to add variation specific images in a group.
- * Version: 1.7.16
+ * Version: 1.7.17
  * Author: WooCommerce
  * Author URI: http://www.woocommerce.com/
  *
  * Text Domain: woocommerce-additional-variation-images
  * Domain Path: /languages
  * Tested up to: 5.0
- * WC tested up to: 3.7
+ * WC tested up to: 3.8
  * WC requires at least: 2.6
  *
  * Copyright: © 2017 WooCommerce.
@@ -36,7 +36,7 @@ woothemes_queue_update( plugin_basename( __FILE__ ), 'c61dd6de57dcecb32bd7358866
 
 if ( ! class_exists( 'WC_Additional_Variation_Images' ) ) :
 
-	define( 'WC_ADDITIONAL_VARIATION_IMAGES_VERSION', '1.7.16' );
+	define( 'WC_ADDITIONAL_VARIATION_IMAGES_VERSION', '1.7.17' );
 
 	/**
 	 * main class.

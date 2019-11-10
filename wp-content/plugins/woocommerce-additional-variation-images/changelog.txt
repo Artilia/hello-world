@@ -1,5 +1,8 @@
 *** WooCommerce Additional Variation Images Changelog ***
 
+2019-11-04 - version 1.7.17
+* Tweak - WC 3.8 compatibility.
+
 2019-08-08 - version 1.7.16
 * Tweak - WC 3.7 compatibility.
 

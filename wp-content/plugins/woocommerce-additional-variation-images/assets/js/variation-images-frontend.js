@@ -1,6 +1,5 @@
 jQuery( document ).ready( function( $ ) {
 	'use strict';
-
 	var wcavi_original_gallery_images = $( wc_additional_variation_images_local.gallery_images_class ).html();
 	var wcavi_original_main_images    = $( wc_additional_variation_images_local.main_images_class ).html();
 
@@ -186,18 +185,18 @@ jQuery( document ).ready( function( $ ) {
 						if ( response ) {
 
 							$( 'form.variations_form' ).trigger( 'wc_additional_variation_images_frontend_ajax_response_callback', [ response, wc_additional_variation_images_local.gallery_images_class, wc_additional_variation_images_local.main_images_class, wcavi_original_gallery_images, wcavi_original_main_images ] );
-	
+
 							// replace with new image set
 							$.wc_additional_variation_images_frontend.imageSwap( response );
 
 						} else {
-	
+
 							$( 'form.variations_form' ).trigger( 'wc_additional_variation_images_frontend_ajax_response_callback', [ response, wc_additional_variation_images_local.gallery_images_class, wc_additional_variation_images_local.main_images_class, wcavi_original_gallery_images, wcavi_original_main_images ] );
-	
+
 							// replace with original image set
 							$.wc_additional_variation_images_frontend.imageSwapOriginal();
 						}
-						
+
 						$( wc_additional_variation_images_local.gallery_images_class ).unblock();
 					});
 				});

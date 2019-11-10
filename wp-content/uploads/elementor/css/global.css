@@ -19,29 +19,29 @@
 	font-style: normal;
 	font-weight: normal;
 	font-display: auto;
-	src: url('https://artiliamade.com/wp-content/uploads/2019/10/noto-serif-jp-v7-latin-regular.woff') format('woff');
+	src: url('http://dev.artilia.bg/wp-content/uploads/2019/10/noto-serif-jp-v7-latin-regular.woff') format('woff');
 }
 @font-face {
 	font-family: 'Noto Serif JP';
 	font-style: normal;
 	font-weight: 600;
 	font-display: auto;
-	src: url('https://artiliamade.com/wp-content/uploads/2019/10/noto-serif-jp-v7-latin-600.woff') format('woff');
+	src: url('http://dev.artilia.bg/wp-content/uploads/2019/10/noto-serif-jp-v7-latin-600.woff') format('woff');
 }
 @font-face {
 	font-family: 'Noto Serif JP';
 	font-style: normal;
 	font-weight: 900;
 	font-display: auto;
-	src: url('https://artiliamade.com/wp-content/uploads/2019/10/noto-serif-jp-v7-latin-900.woff') format('woff');
+	src: url('http://dev.artilia.bg/wp-content/uploads/2019/10/noto-serif-jp-v7-latin-900.woff') format('woff');
 }
 @font-face {
 	font-family: 'Noto Serif JP';
 	font-style: normal;
 	font-weight: 300;
 	font-display: auto;
-	src: url('https://artiliamade.com/wp-content/uploads/2019/10/noto-serif-jp-v7-latin-300.woff2') format('woff2'),
-		url('https://artiliamade.com/wp-content/uploads/2019/10/noto-serif-jp-v7-latin-300.woff') format('woff');
+	src: url('http://dev.artilia.bg/wp-content/uploads/2019/10/noto-serif-jp-v7-latin-300.woff2') format('woff2'),
+		url('http://dev.artilia.bg/wp-content/uploads/2019/10/noto-serif-jp-v7-latin-300.woff') format('woff');
 }
 /* End Custom Fonts CSS */
 /* Start Custom Fonts CSS */@font-face {
@@ -49,51 +49,51 @@
 	font-style: normal;
 	font-weight: normal;
 	font-display: auto;
-	src: url('https://artiliamade.com/wp-content/uploads/2019/10/open-sans-v17-cyrillic_latin-ext_latin_vietnamese_cyrillic-ext_greek-ext_greek-regular.woff') format('woff');
+	src: url('http://dev.artilia.bg/wp-content/uploads/2019/10/open-sans-v17-cyrillic_latin-ext_latin_vietnamese_cyrillic-ext_greek-ext_greek-regular.woff') format('woff');
 }
 @font-face {
 	font-family: 'Open Sans';
 	font-style: normal;
 	font-weight: 600;
 	font-display: auto;
-	src: url('https://artiliamade.com/wp-content/uploads/2019/10/open-sans-v17-cyrillic_latin-ext_latin_vietnamese_cyrillic-ext_greek-ext_greek-600.woff') format('woff');
+	src: url('http://dev.artilia.bg/wp-content/uploads/2019/10/open-sans-v17-cyrillic_latin-ext_latin_vietnamese_cyrillic-ext_greek-ext_greek-600.woff') format('woff');
 }
 @font-face {
 	font-family: 'Open Sans';
 	font-style: normal;
 	font-weight: 800;
 	font-display: auto;
-	src: url('https://artiliamade.com/wp-content/uploads/2019/10/open-sans-v17-cyrillic_latin-ext_latin_vietnamese_cyrillic-ext_greek-ext_greek-800.woff') format('woff');
+	src: url('http://dev.artilia.bg/wp-content/uploads/2019/10/open-sans-v17-cyrillic_latin-ext_latin_vietnamese_cyrillic-ext_greek-ext_greek-800.woff') format('woff');
 }
 @font-face {
 	font-family: 'Open Sans';
 	font-style: italic;
 	font-weight: normal;
 	font-display: auto;
-	src: url('https://artiliamade.com/wp-content/uploads/2019/10/open-sans-v17-cyrillic_latin-ext_latin_vietnamese_cyrillic-ext_greek-ext_greek-italic.woff') format('woff');
+	src: url('http://dev.artilia.bg/wp-content/uploads/2019/10/open-sans-v17-cyrillic_latin-ext_latin_vietnamese_cyrillic-ext_greek-ext_greek-italic.woff') format('woff');
 }
 @font-face {
 	font-family: 'Open Sans';
 	font-style: italic;
 	font-weight: 600;
 	font-display: auto;
-	src: url('https://artiliamade.com/wp-content/uploads/2019/10/open-sans-v17-cyrillic_latin-ext_latin_vietnamese_cyrillic-ext_greek-ext_greek-600italic.woff') format('woff');
+	src: url('http://dev.artilia.bg/wp-content/uploads/2019/10/open-sans-v17-cyrillic_latin-ext_latin_vietnamese_cyrillic-ext_greek-ext_greek-600italic.woff') format('woff');
 }
 @font-face {
 	font-family: 'Open Sans';
 	font-style: italic;
 	font-weight: 800;
 	font-display: auto;
-	src: url('https://artiliamade.com/wp-content/uploads/2019/10/open-sans-v17-cyrillic_latin-ext_latin_vietnamese_cyrillic-ext_greek-ext_greek-800italic.woff') format('woff');
+	src: url('http://dev.artilia.bg/wp-content/uploads/2019/10/open-sans-v17-cyrillic_latin-ext_latin_vietnamese_cyrillic-ext_greek-ext_greek-800italic.woff') format('woff');
 }
 @font-face {
 	font-family: 'Open Sans';
 	font-style: normal;
 	font-weight: 300;
 	font-display: auto;
-	src: url('https://artiliamade.com/wp-content/uploads/2019/10/open-sans-v17-latin-300.woff2') format('woff2'),
-		url('https://artiliamade.com/wp-content/uploads/2019/10/open-sans-v17-latin-300.woff') format('woff'),
-		url('https://artiliamade.com/wp-content/uploads/2019/10/OpenSans-Light.ttf') format('truetype');
+	src: url('http://dev.artilia.bg/wp-content/uploads/2019/10/open-sans-v17-latin-300.woff2') format('woff2'),
+		url('http://dev.artilia.bg/wp-content/uploads/2019/10/open-sans-v17-latin-300.woff') format('woff'),
+		url('http://dev.artilia.bg/wp-content/uploads/2019/10/OpenSans-Light.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'Open Sans';

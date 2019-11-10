@@ -66,6 +66,13 @@ class OMAPI_Menu {
 	public $tabindex = 429;
 
 	/**
+	 * The OM landing page url.
+	 *
+	 * @since 1.8.4
+	 */
+	const LANDING_URL = 'https://optinmonster.com/wp/?utm_source=orgplugin&utm_medium=link&utm_campaign=wpdashboard';
+
+	/**
 	 * Primary class constructor.
 	 *
 	 * @since 1.0.0
@@ -1453,16 +1460,18 @@ class OMAPI_Menu {
 			$sasId = get_option( 'optinmonster_sas_id', $omSasId );
 		}
 
+		// Return the regular WP landing page by default
+		$url = self::LANDING_URL;
+
 		// Return the sas link if we have a sas ID
 		if ( ! empty( $omSasId ) ) {
-			return 'https://www.shareasale.com/r.cfm?u='
-				   . urlencode( trim( $omSasId ) )
-				   . '&b=601672&m=49337&afftrack=&urllink=optinmonster.com';
+			$url = $this->get_affiliate_url( $omSasId );
 		}
 
-		// Return the regular WP landing page by default
-		return 'https://optinmonster.com/wp/?utm_source=orgplugin&utm_medium=link&utm_campaign=wpdashboard';
-
+		return apply_filters( 'optin_monster_action_link', $url, array(
+			'type' => 'sas',
+			'id'   => $omSasId,
+		) );
 	}
 
 	/**
@@ -1497,30 +1506,45 @@ class OMAPI_Menu {
 			$omTrialId = get_option( 'optinmonster_trial_id', $omTrialId );
 		}
 
+		// Return the regular WP landing page by default
+		$url = self::LANDING_URL;
+
 		// Return the trial link if we have a trial ID
 		if ( ! empty( $omTrialId ) ) {
-			return 'https://www.shareasale.com/r.cfm?u='
-				   . urlencode( trim( $omTrialId ) )
-				   . '&b=601672&m=49337&afftrack=&urllink=optinmonster.com%2Ffree-trial%2F%3Fid%3D' . urlencode( trim( $omTrialId ) );
+			$url = $this->get_affiliate_url( $omTrialId )
+				. '%2Ffree-trial%2F%3Fid%3D' . urlencode( trim( $omTrialId ) );
 		}
 
-		// Return the regular WP landing page by default
-		return 'https://optinmonster.com/wp/?utm_source=orgplugin&utm_medium=link&utm_campaign=wpdashboard';
+		return apply_filters( 'optin_monster_action_link', $url, array(
+			'type' => 'trial',
+			'id'   => $omTrialId,
+		) );
+	}
 
+	/**
+	 * Get the affiliate url for given id.
+	 *
+	 * @since  1.8.4
+	 *
+	 * @param  mixed  $reference_id The reference ID.
+	 *
+	 * @return string               The affilaite url.
+	 */
+	public function get_affiliate_url( $reference_id ) {
+		return 'https://www.shareasale.com/r.cfm?u='
+			. urlencode( trim( $reference_id ) )
+			. '&b=601672&m=49337&afftrack=&urllink=optinmonster.com';
 	}
 
 	public function get_action_link() {
-		global $omTrialId, $omSasId;
-		$trial = $this->get_trial_link();
-		$sas   = $this->get_sas_link();
+		global $omTrialId;
 
 		if ( ! empty( $omTrialId ) ) {
-			return $trial;
-		} else if ( ! empty( $omSasId ) ) {
-			return $sas;
-		} else {
-			return 'https://optinmonster.com/wp/?utm_source=orgplugin&utm_medium=link&utm_campaign=wpdashboard';
+			return $this->get_trial_link();
 		}
+
+		// Returns the sas or fallback url, which is self::LANDING_URL.
+		return $this->get_sas_link();
 	}
 
 	public function has_trial_link() {
