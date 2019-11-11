@@ -176,6 +176,7 @@
                 var $option_wrapper = $this.closest('div.select').eq(0);
                 var $label = $option_wrapper.parent().find('.swatch-label').eq(0);
                 var $wc_select_box = $option_wrapper.find('select').first();
+                var $artiliaLabel = $this.closest('tr').prev('tr.table-label-row').find('.selected-value').eq(0);
 
                 // Decode entities
                 var attr_val = $('<div/>').html($this.data('value')).text();
@@ -187,11 +188,15 @@
                 if ($label) {
                     $label.html($wc_select_box.children("[value='" + attr_val + "']").eq(0).text());
                 }
+                if ($artiliaLabel) {
+                    $artiliaLabel.html(attr_val);
+                }
 
             });
 
             $form.find('.variations select').each(function (index, el) {
                 var $current_attr_select = $(el);
+                var $artiliaLabel = $(el).closest('tr').prev('tr.table-label-row').find('.selected-value').eq(0);
                 var current_attribute_name = $current_attr_select.data('attribute_name') || $current_attr_select.attr('name');
 
                 attribute_keys[current_attribute_name] = [];
@@ -206,6 +211,11 @@
                         attribute_keys[current_attribute_name].push($(option).val());
                     }
                 }
+
+                if ($artiliaLabel && attribute_keys[current_attribute_name].length > 0) {
+                    $artiliaLabel.html(attribute_keys[current_attribute_name][0]);
+                }
+
             });
 
             if ($use_ajax) {
@@ -289,6 +299,7 @@
                 //Get the wrapper select div
                 var $option_wrapper = $this.closest('div.select').eq(0);
                 var $label = $option_wrapper.parent().find('.swatch-label').eq(0);
+                var $artiliaLabel = $this.closest('tr').prev('tr.table-label-row').find('.selected-value').eq(0);
 
                 if ($this.hasClass('disabled')) {
                     return false;
@@ -320,6 +331,9 @@
                     if ($label) {
                         $label.html($wc_select_box.children("[value='" + attr_val + "']").eq(0).text());
                     }
+                    if($artiliaLabel){
+                        $artiliaLabel.html(attr_val);
+                    }
                 }
             })
             .on('change', '.radio-option', function (e) {
@@ -328,6 +342,7 @@
 
                 //Get the wrapper select div
                 var $option_wrapper = $this.closest('div.select').eq(0);
+                var $artiliaLabel = $this.closest('tr').prev('tr.table-label-row').find('.selected-value').eq(0);
 
                 //Select the option.
                 var $wc_select_box = $option_wrapper.find('select').first();
@@ -339,8 +354,12 @@
                 attr_val = attr_val.replace(/'/g, '\\\'');
                 attr_val = attr_val.replace(/"/g, '\\\"');
 
-                $wc_select_box.trigger('focusin').children("[value='" + attr_val + "']").prop("selected", "selected").change();
 
+                if($artiliaLabel){
+                    $artiliaLabel.html(attr_val);
+                }
+
+                $wc_select_box.trigger('focusin').children("[value='" + attr_val + "']").prop("selected", "selected").change();
 
             })
             .on('woocommerce_variation_has_changed', function () {
