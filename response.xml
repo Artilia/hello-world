@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Response>
+<Say voice='alice'>Good Morning, today is Saturday, November 9th, today's colors are gray and pink</Say>
+<Say voice='alice' language='es-Es'>Buenos días, hoy es sábado 9 de noviembre, los colores de hoy son gris y rosa</Say>
+<Hangup/>
+</Response>

@@ -219,7 +219,6 @@ class WC_Product_Addons_Cart {
 				$price_type    = $addon['price_type'];
 				$product       = $item->get_product();
 				$product_price = $product->get_price();
-				$price         = html_entity_decode( strip_tags( wc_price( WC_Product_Addons_Helper::get_product_addon_price_for_display( $addon['price'], $values['data'], true ) ) ) );
 
 				/*
 				 * For percentage based price type we want
@@ -231,8 +230,11 @@ class WC_Product_Addons_Cart {
 				 * don't show any price.
 				 */
 				if ( $addon['price'] && 'percentage_based' === $price_type && 0 != $product_price ) {
-					$price = html_entity_decode( strip_tags( wc_price( WC_Product_Addons_Helper::get_product_addon_price_for_display( ( $product_price * ( $addon['price'] / 100 ) ) ) ) ) );
+					$addon_price = $product_price * ( $addon['price'] / 100 );
+				} else {
+					$addon_price = $addon['price'];
 				}
+				$price = html_entity_decode( strip_tags( wc_price( WC_Product_Addons_Helper::get_product_addon_price_for_display( $addon_price, $values['data'] ) ) ) );
 
 				/*
 				 * If there is an add-on price, add the price of the add-on
