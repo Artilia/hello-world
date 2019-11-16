@@ -63,3 +63,24 @@ function artilia_jquery_single_product_selected_option(){
     <?php
     endif;
 }
+
+/**
+ * Disable sidebar for Artilia pages
+ *
+ * @param bool $is_active_sidebar
+ * @param int|string $index
+ *
+ * @return bool
+ */
+function artilia_remove_sidebar( $is_active_sidebar, $index ) {
+//    if( $index !== "sidebar-1" ) {
+//        return $is_active_sidebar;
+//    }
+//    if( ! is_product() ) {
+//        return $is_active_sidebar;
+//    }
+
+    return false;
+}
+
+add_filter( 'is_active_sidebar', 'artilia_remove_sidebar', 10, 2 );

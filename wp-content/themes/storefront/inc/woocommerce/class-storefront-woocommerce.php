@@ -59,8 +59,6 @@ if ( ! class_exists( 'Storefront_WooCommerce' ) ) :
 			add_theme_support(
 				'woocommerce', apply_filters(
 					'storefront_woocommerce_args', array(
-						'single_image_width'    => 416,
-						'thumbnail_image_width' => 324,
 						'product_grid'          => array(
 							'default_columns' => 3,
 							'default_rows'    => 4,

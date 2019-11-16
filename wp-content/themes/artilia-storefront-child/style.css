@@ -40,6 +40,38 @@ Template:     storefront
     margin-bottom: 0.8em;
 }
 
+.flex-control-nav {
+    margin-top: 15px !important;
+}
+
+.flex-control-nav>li {
+    margin-right: 20px !important;
+}
+
+@media (min-width: 768px) {
+    .storefront-breadcrumb {
+        padding: 0 0;
+        margin: 0 0;
+    }
+
+    .storefront-breadcrumb>.col-full {
+        margin-left: 0;
+        padding: 0 1.3em;
+    }
+}
+
+@media (max-width: 568px) {
+    .storefront-breadcrumb {
+        padding: 0 0;
+        margin: 0 0;
+    }
+
+    .storefront-breadcrumb>.col-full {
+        margin-left: 0;
+        padding: 0 0.7em;
+    }
+}
+
 /*Custom Artilia product options START */
 
 div.swatch-wrapper.selected {
@@ -51,10 +83,6 @@ div.swatch-wrapper {
     border: none;
     margin: 0 15px 5px 0;
 }
-
-/*Custom Artilia product options END */
-
-/*Custom Artilia product options START */
 
 .swatch-control.radio-select ul li {
     float: left;
