@@ -1,8 +1,8 @@
 <?php
 /**
- * Description tab
+ * Variable product add to cart
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/single-product/tabs/description.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/single-product/add-to-cart/variable.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -12,15 +12,16 @@
  *
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 2.0.0
+ * @version 3.5.5
  */
 
 defined( 'ABSPATH' ) || exit;
 
-global $post;
+global $product;
 
-$heading = apply_filters( 'woocommerce_product_description_heading', __( 'Description', 'woocommerce' ) );
-
+$attribute_keys  = array_keys( $attributes );
+$variations_json = wp_json_encode( $available_variations );
+$variations_attr = function_exists( 'wc_esc_json' ) ? wc_esc_json( $variations_json ) : _wp_specialchars( $variations_json, ENT_QUOTES, 'UTF-8', true );
 ?>
 
-<?php the_content(); ?>
+Suggestions goes here
