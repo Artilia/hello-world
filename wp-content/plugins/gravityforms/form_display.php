@@ -3164,7 +3164,8 @@ class GFFormDisplay {
 		$page_count        = self::get_max_page_number( $form );
 		$current_page      = $page;
 		$page_name         = rgars( $form['pagination'], sprintf( 'pages/%d', $current_page - 1 ) );
-		$page_name         = ! empty( $page_name ) ? ' - ' . $page_name : '';
+		$page_name         = ! empty( $page_name ) ? $page_name : '';
+//		$page_name         = ! empty( $page_name ) ? ' - ' . $page_name : '';
 		$style             = $form['pagination']['style'];
 		$color             = $style == 'custom' ? " color:{$form['pagination']['color']};" : '';
 		$bgcolor           = $style == 'custom' ? " background-color:{$form['pagination']['backgroundColor']};" : '';
@@ -3189,15 +3190,17 @@ class GFFormDisplay {
 		}
 
 
+//        <div class='gf_progressbar_percentage percentbar_{$style} percentbar_{$percent_number}' style='width:{$percent};{$color}{$bgcolor}'><span>{$percent}</span></div>
 		$progress_bar .= "
         <div id='gf_progressbar_wrapper_{$form_id}' class='gf_progressbar_wrapper'>
-            <h3 class='gf_progressbar_title'>";
-		$progress_bar .= ! $progress_complete ? esc_html__( 'Step', 'gravityforms' ) . " {$current_page} " . esc_html__( 'of', 'gravityforms' ) . " {$page_count}{$page_name}" : "{$page_name}";
-		$progress_bar .= "
-        </h3>
             <div class='gf_progressbar'>
-                <div class='gf_progressbar_percentage percentbar_{$style} percentbar_{$percent_number}' style='width:{$percent};{$color}{$bgcolor}'><span>{$percent}</span></div>
-            </div></div>";
+                <div class='gf_progressbar_percentage percentbar_{$style} percentbar_{$percent_number}' style='width:{$percent};{$color}{$bgcolor}'></div>
+            </div>
+        <h3 class='gf_progressbar_title'>";
+//		$progress_bar .= ! $progress_complete ? esc_html__( 'Step', 'gravityforms' ) . " {$current_page} " . esc_html__( 'of', 'gravityforms' ) . " {$page_count}{$page_name}" : "{$page_name}";
+		$progress_bar .= "{$page_name}";
+		$progress_bar .= "
+        </h3></div>";
 		//close div for surrounding wrapper class when confirmation page
 		$progress_bar .= $progress_complete ? $confirmation_message . '</div>' : '';
 

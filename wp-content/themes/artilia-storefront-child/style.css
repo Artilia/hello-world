@@ -134,3 +134,130 @@ div.swatch-wrapper {
 }
 
 /*Custom Artilia product options END */
+
+@media only screen and (min-width: 641px) {
+
+    body #gform_wrapper_1 {
+        max-width: 50%;
+        margin: 0 auto;
+    }
+
+    body #gform_wrapper_1 ul li.gfield .ginput_container,
+    body #gform_wrapper_1 ul li.gfield .gfield_description,
+    body #gform_wrapper_1 div.ginput_complex label
+    /*body #gform_wrapper_1 input:not([type='radio']):not([type='checkbox']):not([type='submit']),*/
+    /*body #gform_wrapper_1 select,*/
+    /*body #gform_wrapper_1 textarea*/
+    {
+        text-align:center;
+    }
+
+    body #gform_wrapper_1 ul.top_label li.gfield label.gfield_label {
+        text-align: center;
+        display: block;
+    }
+
+    body #gform_wrapper_1 .gform_footer,
+    body #gform_wrapper_1 .gform_page_footer{
+        text-align: center;
+    }
+
+}
+
+body .gform_wrapper .gf_progressbar_wrapper .gf_progressbar_title{
+    opacity: 1;
+    padding: 0;
+    margin: 60px 0 0 0 !important;
+    font-size: 48px;
+    text-align: center;
+    font-family: "Noto Serif JP", Open Sans;
+}
+
+body .gform_wrapper h4.make-it-yours-h4{
+    text-align: center;
+    font-size: 16px;
+    font-family: "Open Sans", Open Sans;
+}
+
+body .gform_wrapper hr.make-it-yours-hr{
+    background-color: black;
+    margin: 25px 0;
+}
+
+body .gform_wrapper .gform_page_footer{
+    border-top: 1px solid black;
+    margin: 40px 0 25px 0;
+}
+
+body #gform_wrapper_1 input:not([type='radio']):not([type='checkbox']):not([type='submit']):not([type='button']),
+body #gform_wrapper_1 select,
+body #gform_wrapper_1 textarea
+{
+    font-size: 24px;
+    font-family: "Open Sans", Open Sans;
+    padding: 10px 18px;
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+body .gform_wrapper .gf_progressbar_wrapper .gf_progressbar_percentage{
+    height: 3px;
+}
+
+body .gform_wrapper .gf_progressbar_wrapper .gf_progressbar{
+    padding: 0;
+}
+body .gform_wrapper .gf_progressbar_wrapper .gf_progressbar:after{
+    height: 0;
+}
+
+.make-it-yours-form{
+    background-color: #FFF776;
+    border: none;
+    color: black;
+    padding: 15px 40px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    font-family: "Open Sans", Open Sans;
+}
+
+body .gform_wrapper .gform_button,
+body .gform_wrapper .gform_previous_button,
+body .gform_wrapper .gform_next_button{
+    background-color: #FFF776;
+    border: none;
+    color: black;
+    padding: 15px 40px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    font-family: "Open Sans", Open Sans;
+}
+
+.woocommerce-variation.single_variation .woocommerce-Price-amount{
+    display: none;
+}
+
+.pum-content.popmake-content{
+    top: 4%;
+}
+
+.pum-title.popmake-title{
+    display:none;
+}
+
+.pum-container.popmake{
+    height: 90%;
+}
+

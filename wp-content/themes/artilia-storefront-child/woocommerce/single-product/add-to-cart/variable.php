@@ -52,6 +52,8 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 				<?php endforeach; ?>
 			</tbody>
 		</table>
+        <p>&nbsp;</p>
+        <p class="make-it-yours-form">Make it yours</p>
 
 		<div class="single_variation_wrap">
 			<?php
