@@ -66,6 +66,15 @@ class OMAPI_Menu {
 	public $tabindex = 429;
 
 	/**
+	 * Panel slugs/names.
+	 *
+	 * @since 1.9.0
+	 *
+	 * @var array
+	 */
+	public $panels = array();
+
+	/**
 	 * The OM landing page url.
 	 *
 	 * @since 1.8.4
@@ -90,8 +99,17 @@ class OMAPI_Menu {
 			// Load helper body classes
 			add_filter( 'admin_body_class', array( $this, 'admin_body_classes' ) );
 
+			add_action( 'admin_notices', array( $this, 'maybe_output_cybermonday_notice' ), 2 );
+			add_action( 'all_admin_notices', array( $this, 'maybe_output_cybermonday_notice' ), 2 );
 		}
 
+		$this->panels = array(
+			'optins'      => __( 'Campaigns', 'optin-monster-api' ),
+			'api'         => __( 'Authorization', 'optin-monster-api' ),
+			'woocommerce' => __( 'WooCommerce', 'optin-monster-api' ),
+			'support'     => __( 'Support', 'optin-monster-api' ),
+			'migrate'     => __( 'Migration', 'optin-monster-api' ),
+		);
 	}
 
 	/**
@@ -116,16 +134,26 @@ class OMAPI_Menu {
 
 		$this->hook = add_menu_page(
 			__( 'OptinMonster', 'optin-monster-api' ),
-			__( 'OptinMonster', 'optin-monster-api' ),
-			apply_filters( 'optin_monster_api_menu_cap', 'manage_options' ),
+			__( 'OptinMonster', 'optin-monster-api' ) . '<span class="om-pulse"></span>',
+			apply_filters( 'optin_monster_api_menu_cap', 'manage_options', 'optin-monster-api-settings' ),
 			'optin-monster-api-settings',
 			array( $this, 'page' ),
 			'none',
 			579
 		);
 
+		// Just add a placeholder secondary page.
+		add_submenu_page(
+			'optin-monster-api-settings', // parent slug
+			$this->panels[ $this->view ], //page title,
+			$this->panels[ $this->view ],
+			apply_filters( 'optin_monster_api_menu_cap', 'manage_options', 'optin-monster-api-settings' ), //cap
+			'optin-monster-api-settings', //slug
+			array( $this, 'page' )
+		);
+
 		// Load global icon font styles.
-		add_action( 'admin_head', array( $this, 'icon' ) );
+		add_action( 'admin_head', array( $this, 'global_styles' ) );
 
 		// Load settings page assets.
 		if ( $this->hook ) {
@@ -139,14 +167,74 @@ class OMAPI_Menu {
 	 *
 	 * @since 1.0.0
 	 */
-	public function icon() {
+	public function global_styles() {
+		$this->base->output_min_css( 'archie-css.php' );
 
-		?>
-		<style type="text/css">@font-face{font-family: 'archie';src:url('<?php echo plugins_url( '/assets/fonts/archie.eot?velzrt', OMAPI_FILE ); ?>');src:url('<?php echo plugins_url( '/assets/fonts/archie.eot?#iefixvelzrt', OMAPI_FILE ); ?>') format('embedded-opentype'),url('<?php echo plugins_url( '/assets/fonts/archie.woff?velzrt', OMAPI_FILE ); ?>') format('woff'),url('<?php echo plugins_url( '/assets/fonts/archie.ttf?velzrt', OMAPI_FILE ); ?>') format('truetype'),url('<?php echo plugins_url( '/assets/fonts/archie.svg?velzrt#archie', OMAPI_FILE ); ?>') format('svg');font-weight: normal;font-style: normal;}#toplevel_page_optin-monster-api-settings .dashicons-before,#toplevel_page_optin-monster-api-settings .dashicons-before:before,#toplevel_page_optin-monster-api-welcome .dashicons-before,#toplevel_page_optin-monster-api-welcome .dashicons-before:before{font-family: 'archie';speak: none;font-style: normal;font-weight: normal;font-variant: normal;text-transform: none;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}#toplevel_page_optin-monster-api-settings .dashicons-before:before,#toplevel_page_optin-monster-api-welcome .dashicons-before:before{content: "\e600";font-size: 38px;margin-top: -9px;margin-left: -8px;}</style>
-		<?php
-
+		if ( ! $this->is_om_page() && $this->should_show_cybermonday_notice() ) {
+			$this->base->output_min_css( 'cybermonday-pulse-css.php' );
+		}
 	}
 
+	/**
+	 * Should we show the cybermonday promo/notice.
+	 *
+	 * @since  1.9.0
+	 *
+	 * @return bool
+	 */
+	public function should_show_cybermonday_notice() {
+		$now       = time();
+		$begins    = strtotime( '2019-11-25 00:00:00' );
+		// $begins    = strtotime( '2019-11-19 00:00:00' );
+		$ends      = strtotime( '2019-12-03 11:59:59' );
+		$in_window = $now > $begins && $now < $ends;
+
+		return $in_window && 'off' !== get_user_setting( 'om_cybermonday_notice', 'on' );
+	}
+
+	/**
+	 * Outputs the cybermonday promo notice, if we can show it.
+	 *
+	 * @since 1.9.0
+	 */
+	public function maybe_output_cybermonday_notice() {
+		static $hooked = false;
+		if (
+			! $hooked
+			&& $this->should_show_cybermonday_notice()
+			&& $this->is_om_page()
+		) {
+
+			$url = $this->base->get_api_credentials()
+				? OPTINMONSTER_APP_URL . '/account/upgrade'
+				: 'https://optinmonster.com/pricing';
+			$url .= '/?utm_source=orgplugin&utm_medium=link&utm_campaign=bfcm2019';
+
+			$this->base->output_min_css( 'cybermonday-notification-css.php' );
+			$this->base->output_view( 'cybermonday-notification.php', compact( 'url' ) );
+			add_action( 'admin_footer', array( $this, 'handle_closing_notice' ) );
+		}
+		$hooked = true;
+	}
+
+	/**
+	 * Handles the cybermondy notice-closing and setting the cookie.
+	 *
+	 * @since 1.9.0
+	 */
+	public function handle_closing_notice() {
+		$this->base->output_view( 'cybermonday-notification-js.php' );
+	}
+
+	/**
+	 * Adds om admin body classes
+	 *
+	 * @since  1.3.4
+	 *
+	 * @param  array  $classes
+	 *
+	 * @return array
+	 */
 	public function admin_body_classes( $classes ) {
 
 		$classes .= ' omapi-screen ';
@@ -157,6 +245,36 @@ class OMAPI_Menu {
 
 		return $classes;
 
+	}
+
+	/**
+	 * Check if we're on one of the OM menu/sub-menu pages.
+	 *
+	 * @since  1.9.0
+	 *
+	 * @return boolean
+	 */
+	public function is_om_page() {
+		if ( ! is_admin() ) {
+			return false;
+		}
+
+		if ( function_exists( 'get_current_screen' ) ) {
+			$screen = get_current_screen();
+			$page = $screen->id;
+			if ( 'toplevel_page_optin-monster-api-settings' === $page ) {
+				return true;
+			}
+
+			if ( ! empty( $screen->parent_base ) && false !== strpos( $screen->parent_base, 'optin-monster-api-settings' ) ) {
+				return true;
+			}
+
+		} else {
+			$page = isset( $_GET['page'] ) ? $_GET['page'] : '';
+		}
+
+		return false !== strpos( $page, 'optin-monster' );
 	}
 
 	/**
@@ -429,32 +547,32 @@ class OMAPI_Menu {
 	public function get_panels() {
 
 		// Only load the API panel if no API credentials have been set.
-		$panels              = array();
-		$creds               = $this->base->get_api_credentials();
-		$can_migrate         = $this->base->can_migrate();
-		$is_legacy_active    = $this->base->is_legacy_active();
-		$woo_version_compare = OMAPI::woocommerce_version_compare( '3.0.0' );
-		$can_manage_woo      = current_user_can( 'manage_woocommerce' );
+		$panels           = array();
+		$creds            = $this->base->get_api_credentials();
+		$can_migrate      = $this->base->can_migrate();
+		$is_legacy_active = $this->base->is_legacy_active();
+		$is_minimum_woo   = OMAPI_WooCommerce::is_minimum_version();
+		$can_manage_woo   = current_user_can( 'manage_woocommerce' );
 
 		// Set panels requiring credentials.
 		if ( $creds ) {
-			$panels['optins'] = __( 'Campaigns', 'optin-monster-api' );
+			$panels['optins'] = $this->panels['optins'];
 		}
 
 		// Set default panels.
-		$panels['api']  = __( 'Authorization', 'optin-monster-api' );
+		$panels['api']  = $this->panels['api'];
 
 		// Set the WooCommerce panel.
-		if ( $creds && $woo_version_compare && $can_manage_woo ) {
-			$panels['woocommerce'] = __( 'WooCommerce', 'optin-monster-api' );
+		if ( $creds && ( $is_minimum_woo || OMAPI_WooCommerce::is_connected() ) && $can_manage_woo ) {
+            $panels['woocommerce'] = $this->panels['woocommerce'];
 		}
 
 		// Set the Support panel
-		$panels['support'] = __( 'Support', 'optin-monster-api' );
+		$panels['support'] = $this->panels['support'];
 
 		// Set the migration panel.
 		if ( $creds && $can_migrate && $is_legacy_active ) {
-			$panels['migrate'] = __( 'Migration', 'optin-monster-api' );
+			$panels['migrate'] = $this->panels['migrate'];
 		}
 
 		return apply_filters( 'optin_monster_api_panels', $panels );
@@ -1277,11 +1395,16 @@ class OMAPI_Menu {
 	 */
 	public function get_woocommerce() {
 
-		$keys_tab       = OMAPI::woocommerce_version_compare( '3.4.0' ) ? 'advanced' : 'api';
+		$keys_tab       = OMAPI_WooCommerce::version_compare( '3.4.0' ) ? 'advanced' : 'api';
 		$keys_admin_url = admin_url( "admin.php?page=wc-settings&tab={$keys_tab}&section=keys" );
 		$output         = '';
 
-		if ( OMAPI_WooCommerce::is_connected() ) {
+		if ( ! OMAPI_WooCommerce::is_minimum_version() && OMAPI_WooCommerce::is_connected() ) {
+			$output .= '<p>' . esc_html( sprintf( __( 'OptinMonster requires WooCommerce %s or above.', 'optin-monster-api' ), OMAPI_WooCommerce::MINIMUM_VERSION ) ) . '</p>'
+				. '<p>' . esc_html_x( 'This site is currently running: ', 'the current version of WooCommerce: "WooCommerce x.y.z"', 'optin-monster-api' )
+				. '<code>WooCommerce ' . esc_html( OMAPI_WooCommerce::version() ) . '</code>.</p>'
+				. '<p>' . esc_html__( 'Please upgrade to the latest version of WooCommerce to enjoy deeper integration with OptinMonster.', 'optin-monster-api' ) . '</p>';
+		} elseif ( OMAPI_WooCommerce::is_connected() ) {
 			// Set some default key details.
 			$defaults = array(
 				'key_id'        => '',

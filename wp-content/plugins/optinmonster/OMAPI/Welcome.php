@@ -183,13 +183,15 @@ class OMAPI_Welcome {
 	 * @since 1.1.4.2
 	 */
 	public function register_welcome_page() {
+		$slug = 'optin-monster-api-welcome';
+		$is_current = isset( $_GET['page'] ) && $slug === $_GET['page'];
 
 		$this->hook = add_submenu_page(
-			__( 'OptinMonster', 'optin-monster-api' ), //parent slug
+			$is_current ? 'optin-monster-api-settings' : 'optin-monster-api-settings-no-menu', //parent slug
 			__( 'Welcome to OptinMonster', 'optin-monster-api' ), //page title,
 			__( 'Welcome', 'optin-monster-api'),
-			apply_filters( 'optin_monster_api_menu_cap', 'manage_options' ), //cap
-			'optin-monster-api-welcome', //slug
+			apply_filters( 'optin_monster_api_menu_cap', 'manage_options', $slug ), //cap
+			$slug, //slug
 			array($this, 'callback_to_display_page') //callback
 		);
 

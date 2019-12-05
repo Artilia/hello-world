@@ -174,11 +174,13 @@ class OMAPI_Content {
 		elseif ( 'woocommerce' === $this->view ) :
 		?>
 			<p class="submit">
-				<?php if ( OMAPI_WooCommerce::is_connected() ) : ?>
-					<input class="button button-primary" type="submit" name="omapi_woocommerce_disconnect" value="<?php esc_attr_e( 'Disconnect WooCommerce', 'optin-monster-api' ); ?>" tabindex="749" />
-				<?php else : ?>
-					<input class="button button-primary" type="submit" name="omapi_woocommerce_connect" value="<?php esc_attr_e( 'Connect WooCommerce', 'optin-monster-api' ); ?>" tabindex="749" />&nbsp;
-					<input class="button button-secondary" type="submit" name="omapi[woocommerce][autogenerate]" value="<?php esc_attr_e( 'Auto-Generate Keys', 'optin-monster-api' ); ?>" tabindex="749" />
+				<?php if ( OMAPI_WooCommerce::is_minimum_version() ) : ?>
+					<?php if ( OMAPI_WooCommerce::is_connected() ) : ?>
+						<input class="button button-primary" type="submit" name="omapi_woocommerce_disconnect" value="<?php esc_attr_e( 'Disconnect WooCommerce', 'optin-monster-api' ); ?>" tabindex="749" />
+					<?php else : ?>
+						<input class="button button-primary" type="submit" name="omapi_woocommerce_connect" value="<?php esc_attr_e( 'Connect WooCommerce', 'optin-monster-api' ); ?>" tabindex="749" />&nbsp;
+						<input class="button button-secondary" type="submit" name="omapi[woocommerce][autogenerate]" value="<?php esc_attr_e( 'Auto-Generate Keys', 'optin-monster-api' ); ?>" tabindex="749" />
+					<?php endif; ?>
 				<?php endif; ?>
 			</p>
 		</form>

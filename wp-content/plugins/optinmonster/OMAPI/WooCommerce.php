@@ -48,6 +48,15 @@ class OMAPI_WooCommerce {
 	public $base;
 
 	/**
+	 * The minimum WooCommerce version required.
+	 *
+	 * @since 1.9.0
+	 *
+	 * @var string
+	 */
+	const MINIMUM_VERSION = '3.2.0';
+
+	/**
 	 * Primary class constructor.
 	 *
 	 * @since 1.7.0
@@ -85,7 +94,9 @@ class OMAPI_WooCommerce {
 			);
 		}
 
-		$data['woocommerce'] = OMAPI::woocommerce_version();
+		$data['woocommerce'] = self::version();
+		$data['restUrl']     = esc_url_raw( get_rest_url() );
+		$data['homeUrl']     = esc_url_raw( home_url() );
 
 		// Get the OptinMonster API credentials.
 		$creds = $this->get_request_api_credentials();
@@ -342,5 +353,46 @@ class OMAPI_WooCommerce {
 		}
 
 		return $response;
+	}
+
+	/**
+	 * Return the WooCommerce versions string.
+	 *
+	 * @since 1.9.0
+	 *
+	 * @return string
+	 */
+	public static function version() {
+		return defined( 'WC_VERSION' ) ? WC_VERSION : '0.0.0';
+	}
+
+	/**
+	 * Determines if the passed version string passes the operator compare
+	 * against the currently installed version of WooCommerce.
+	 *
+	 * Defaults to checking if the current WooCommerce version is greater than
+	 * the passed version.
+	 *
+	 * @since 1.9.0
+	 *
+	 * @param string $version  The version to check.
+	 * @param string $operator The operator to use for comparison.
+	 *
+	 * @return string
+	 */
+	public static function version_compare( $version = '', $operator = '>=' ) {
+		return version_compare( self::version(), $version, $operator );
+	}
+
+	/**
+	 * Determines if the current WooCommerce version meets the minimum version
+	 * requirement.
+	 *
+	 * @since 1.9.0
+	 *
+	 * @return boolean
+	 */
+	public static function is_minimum_version() {
+		return self::version_compare( self::MINIMUM_VERSION );
 	}
 }

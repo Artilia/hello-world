@@ -585,8 +585,7 @@ class OMAPI_Save {
 	 * @return void
 	 */
 	protected function woocommerce_connect( $data ) {
-		$woocommerce = new OMAPI_WooCommerce();
-		$keys        = $woocommerce->validate_keys( $data );
+		$keys = $this->base->woocommerce->validate_keys( $data );
 
 		if ( isset( $keys['error'] ) ) {
 			$this->errors['error'] = $keys['error'];
@@ -594,7 +593,7 @@ class OMAPI_Save {
 
 			// Get the version of the REST API we should use. The
 			// `v3` route wasn't added until WooCommerce 3.5.0.
-			$api_version = OMAPI::woocommerce_version_compare( '3.5.0' )
+			$api_version = OMAPI_WooCommerce::version_compare( '3.5.0' )
 				? 'v3'
 				: 'v2';
 
@@ -602,7 +601,7 @@ class OMAPI_Save {
 			$url = esc_url_raw( site_url() );
 
 			// Make a connection request.
-			$response = $woocommerce->connect(
+			$response = $this->base->woocommerce->connect(
 				array(
 					'consumerKey'    => $keys['consumer_key'],
 					'consumerSecret' => $keys['consumer_secret'],
@@ -651,8 +650,7 @@ class OMAPI_Save {
 	 * @return void
 	 */
 	protected function woocommerce_disconnect( $data ) {
-		$woocommerce = new OMAPI_WooCommerce();
-		$response    = $woocommerce->disconnect();
+		$response = $this->base->woocommerce->disconnect();
 
 		// Output an error or register a successful disconnection.
 		if ( is_wp_error( $response ) ) {

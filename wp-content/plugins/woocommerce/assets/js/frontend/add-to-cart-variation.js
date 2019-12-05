@@ -197,15 +197,10 @@
 			$weight        = form.$product.find( '.product_weight, .woocommerce-product-attributes-item--weight .woocommerce-product-attributes-item__value' ),
 			$dimensions    = form.$product.find( '.product_dimensions, .woocommerce-product-attributes-item--dimensions .woocommerce-product-attributes-item__value' ),
 			$qty           = form.$singleVariationWrap.find( '.quantity' ),
-			$artiliaPrice           = $('.elementor-widget-woocommerce-product-price').find( '.price' ),
 			purchasable    = true,
 			variation_id   = '',
 			template       = false,
 			$template_html = '';
-
-		if( variation.price_html) {
-			$artiliaPrice.html(variation.price_html);
-		}
 
 		if ( variation.sku ) {
 			$sku.wc_set_content( variation.sku );

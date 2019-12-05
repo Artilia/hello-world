@@ -261,8 +261,7 @@ class WC_Frontend_Scripts {
 				'version' => WC_VERSION,
 			),
 			'wc-add-to-cart-variation'   => array(
-				'src'     => self::get_asset_url( 'assets/js/frontend/add-to-cart-variation.js' ),
-//				'src'     => self::get_asset_url( 'assets/js/frontend/add-to-cart-variation' . $suffix . '.js' ),
+				'src'     => self::get_asset_url( 'assets/js/frontend/add-to-cart-variation' . $suffix . '.js' ),
 				'deps'    => array( 'jquery', 'wp-util', 'jquery-blockui' ),
 				'version' => WC_VERSION,
 			),

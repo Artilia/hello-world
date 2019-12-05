@@ -5,9 +5,11 @@
  * Description: OptinMonster is the best WordPress popup plugin that helps you grow your email list and sales with email popups, exit intent popups, floating bars and more!
  * Author:      OptinMonster Team
  * Author URI:  https://optinmonster.com
- * Version:     1.8.4
+ * Version:     1.9.3
  * Text Domain: optin-monster-api
  * Domain Path: languages
+ * WC requires at least: 3.2.0
+ * WC tested up to:      3.8.1
  *
  * OptinMonster is is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -60,7 +62,7 @@ class OMAPI {
 	 *
 	 * @var string
 	 */
-	public $version = '1.8.4';
+	public $version = '1.9.3';
 
 	/**
 	 * The name of the plugin.
@@ -90,6 +92,13 @@ class OMAPI {
 	public $file = __FILE__;
 
 	/**
+	 * The assets base URL for this plugin.
+	 *
+	 * @var string
+	 */
+	public $url;
+
+	/**
 	 * OMAPI_Ajax object
 	 *
 	 * @var OMAPI_Ajax
@@ -116,6 +125,13 @@ class OMAPI {
 	 * @var OMAPI_Shortcode
 	 */
 	public $shortcode;
+
+	/**
+	 * OMAPI_WooCommerce object.
+	 *
+	 * @var OMAPI_WooCommerce
+	 */
+	public $woocommerce;
 
 	/**
 	 * OMAPI_Actions object (loaded only in the admin)
@@ -172,6 +188,13 @@ class OMAPI {
 	 * @var OMAPI_Welcome
 	 */
 	public $welcome;
+
+	/**
+	 * OMAPI_TrustPulse object (loaded only in the admin)
+	 *
+	 * @var OMAPI_TrustPulse
+	 */
+	public $trustpulse;
 
 	/**
 	 * OMAPI_Review object (loaded only in the admin)
@@ -299,10 +322,12 @@ class OMAPI {
 	public function load_global() {
 
 		// Register global components.
-		$this->ajax      = new OMAPI_Ajax();
-		$this->type      = new OMAPI_Type();
-		$this->output    = new OMAPI_Output();
-		$this->shortcode = new OMAPI_Shortcode();
+		$this->ajax        = new OMAPI_Ajax();
+		$this->type        = new OMAPI_Type();
+		$this->output      = new OMAPI_Output();
+		$this->shortcode   = new OMAPI_Shortcode();
+		$this->woocommerce = new OMAPI_WooCommerce();
+        $this->url         = plugin_dir_url( __FILE__ );
 
 		// Fire a hook to say that the global classes are loaded.
 		do_action( 'optin_monster_api_global_loaded' );
@@ -344,6 +369,7 @@ class OMAPI {
 		$this->refresh       = new OMAPI_Refresh();
 		$this->validate      = new OMAPI_Validate();
 		$this->welcome       = new OMAPI_Welcome();
+		$this->trustpulse    = new OMAPI_TrustPulse();
 		$this->review        = new OMAPI_Review();
 		$this->pointer       = new OMAPI_Pointer();
 		$this->sites         = new OMAPI_Sites();
@@ -501,6 +527,18 @@ class OMAPI {
 	}
 
 	/**
+	 * Returns the API credentials for OptinMonster.
+	 *
+	 * @since 1.9.2
+	 *
+	 * @return string The API url to use for embedding on the page.
+	 */
+	public function get_api_url() {
+		$customApiUrl = $this->get_option( 'customApiUrl' );
+		return ! empty( $customApiUrl ) ? $customApiUrl : OPTINMONSTER_APIJS_URL;
+	}
+
+	/**
 	 * Check to see if we have any optins to migrate to the SaaS
 	 *
 	 * @since 1.0.0
@@ -555,7 +593,7 @@ class OMAPI {
 	 * @return string
 	 */
 	public static function woocommerce_version() {
-		return defined( 'WC_VERSION' ) ? WC_VERSION : '0.0.0';
+		return OMAPI_WooCommerce::version();
 	}
 
 	/**
@@ -573,7 +611,7 @@ class OMAPI {
 	 * @return string
 	 */
 	public static function woocommerce_version_compare( $version = '', $operator = '>=' ) {
-		return version_compare( self::woocommerce_version(), $version, $operator );
+		return OMAPI_WooCommerce::version_compare( $version, $operator );
 	}
 
 	/**
@@ -584,7 +622,7 @@ class OMAPI {
 	 * @return bool
 	 */
 	public static function is_mailpoet_active() {
-		return class_exists( 'WYSIJA_object' ) || class_exists( '\\MailPoet\\Config\\Initializer' );
+		return class_exists( 'WYSIJA_object' ) || class_exists( 'MailPoet\\API\\API' );
 	}
 
 	/**
@@ -612,6 +650,36 @@ class OMAPI {
 
 		return $this->get_api_credentials() ? 'optins' : 'api';
 
+	}
+
+	/**
+	 * Get and include a view file for output.
+	 *
+	 * @since  1.9.0
+	 *
+	 * @param  string  $file The view file.
+	 * @param  mixed   $data Arbitrary data to be made available to the view file.
+	 *
+	 * @return void
+	 */
+	public function output_view( $file, $data = array() ) {
+		require dirname( $this->file ) . '/views/' . $file;
+	}
+
+	/**
+	 * Get and include a view file with css and minify the output.
+	 *
+	 * @since  1.9.0
+	 *
+	 * @param  string  $file The view file.
+	 * @param  mixed   $data Arbitrary data to be made available to the view file.
+	 *
+	 * @return void
+	 */
+	public function output_min_css( $file, $data = array() ) {
+		ob_start();
+		$this->output_view( $file, $data );
+		echo str_replace( array( "\n", "\r", "\t" ), '', ob_get_clean() );
 	}
 
 	/**

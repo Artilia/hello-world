@@ -99,7 +99,6 @@ class OMAPI_Ajax {
 	 * @since 1.0.0
 	 */
 	public function mailpoet() {
-
 		// Run a security check first.
 		check_ajax_referer( 'omapi', 'nonce' );
 
@@ -133,7 +132,7 @@ class OMAPI_Ajax {
 		$data = apply_filters( 'optin_monster_pre_optin_mailpoet', $data, $_REQUEST, $list, null );
 
 		// Save the subscriber. Check for MailPoet 3 first. Default to legacy.
-		if ( class_exists( '\\MailPoet\\Config\\Initializer' ) ) {
+		if ( class_exists( 'MailPoet\\API\\API' ) ) {
 			// Customize the lead data for MailPoet 3.
 			if ( isset( $user['firstname'] ) ) {
 				$user['first_name'] = $user['firstname'];
@@ -145,18 +144,20 @@ class OMAPI_Ajax {
 				unset( $user['lastname'] );
 			}
 
-			if ( \MailPoet\Models\Subscriber::findOne( $user['email'] ) ) {
-				try {
-					\MailPoet\API\API::MP( 'v1' )->subscribeToList( $user['email'], $list );
-				} catch ( Exception $e ) {
-					// Do nothing.
-				}
-			} else {
-				try {
+			try {
+				$subscriber = \MailPoet\API\API::MP( 'v1' )->getSubscriber( $user['email'] );
+			} catch ( Exception $e ) {
+				$subscriber = false;
+			}
+
+			try {
+				if ( $subscriber ) {
+					\MailPoet\API\API::MP( 'v1' )->subscribeToList( $subscriber['email'], array( $list ) );
+				} else {
 					\MailPoet\API\API::MP( 'v1' )->addSubscriber( $user, array( $list ) );
-				} catch ( Exception $e ) {
-					// Do nothing.
 				}
+			} catch ( Exception $e ) {
+				// Do nothing.
 			}
 		} else {
 			$userHelper = WYSIJA::get( 'user', 'helper' );

@@ -1,0 +1,97 @@
+# Copyright (C) 2017 popup-maker-advanced-theme-builder
+# This file is distributed under the same license as the popup-maker-advanced-theme-builder package.
+msgid ""
+msgstr ""
+"Project-Id-Version: popup-maker-advanced-theme-builder\n"
+"Report-Msgid-Bugs-To: https://wppopupmaker.com/support\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Language-Team: WP Popup Maker <support@wppopupmaker.com>\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: deprecated/class-popmake-advanced-theme-builder.php:65, deprecated/class-popmake-advanced-theme-builder.php:77
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: deprecated/includes/admin/admin-setup.php:28
+msgid "Use as background image."
+msgstr ""
+
+#: deprecated/includes/admin/themes/metabox-close-fields.php:6, deprecated/includes/admin/themes/metabox-container-fields.php:6, deprecated/includes/admin/themes/metabox-overlay-fields.php:6
+msgid "Image"
+msgstr ""
+
+#: deprecated/includes/admin/themes/metabox-close-fields.php:11, deprecated/includes/admin/themes/metabox-container-fields.php:11, deprecated/includes/admin/themes/metabox-overlay-fields.php:11
+msgid "Select Image"
+msgstr ""
+
+#: deprecated/includes/admin/themes/metabox-close-fields.php:12, deprecated/includes/admin/themes/metabox-container-fields.php:12, deprecated/includes/admin/themes/metabox-overlay-fields.php:12
+msgid "Select a background image."
+msgstr ""
+
+#: deprecated/includes/admin/themes/metabox-close-fields.php:17, deprecated/includes/admin/themes/metabox-container-fields.php:17, deprecated/includes/admin/themes/metabox-overlay-fields.php:17
+msgid "Repeat"
+msgstr ""
+
+#: deprecated/includes/admin/themes/metabox-close-fields.php:32, deprecated/includes/admin/themes/metabox-container-fields.php:32, deprecated/includes/admin/themes/metabox-overlay-fields.php:32
+msgid "Position"
+msgstr ""
+
+#: deprecated/includes/input-options.php:4
+msgid "Top Left"
+msgstr ""
+
+#: deprecated/includes/input-options.php:5
+msgid "Top Center"
+msgstr ""
+
+#: deprecated/includes/input-options.php:6
+msgid "Top Right"
+msgstr ""
+
+#: deprecated/includes/input-options.php:7
+msgid "Middle Left"
+msgstr ""
+
+#: deprecated/includes/input-options.php:8
+msgid "Middle Center"
+msgstr ""
+
+#: deprecated/includes/input-options.php:9
+msgid "Middle Right"
+msgstr ""
+
+#: deprecated/includes/input-options.php:10
+msgid "Bottom Left"
+msgstr ""
+
+#: deprecated/includes/input-options.php:11
+msgid "Bottom Center"
+msgstr ""
+
+#: deprecated/includes/input-options.php:12
+msgid "Bottom Right"
+msgstr ""
+
+#: deprecated/includes/input-options.php:19
+msgid "None"
+msgstr ""
+
+#: deprecated/includes/input-options.php:20
+msgid "Tile Horizontally"
+msgstr ""
+
+#: deprecated/includes/input-options.php:21
+msgid "Tile Vertically"
+msgstr ""
+
+#: deprecated/includes/input-options.php:22
+msgid "Tile Both"
+msgstr ""

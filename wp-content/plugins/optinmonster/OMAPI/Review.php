@@ -134,7 +134,7 @@ class OMAPI_Review {
 			__( 'OptinMonster', 'optin-monster-api' ), //parent slug
 			__( 'Review OptinMonster', 'optin-monster-api' ), //page title,
 			__( 'Thank you for your Review', 'optin-monster-api'),
-			apply_filters( 'optin_monster_api_menu_cap', 'manage_options' ), //cap
+			apply_filters( 'optin_monster_api_menu_cap', 'manage_options', 'optin-monster-api-review' ), //cap
 			'optin-monster-api-review', //slug
 			array($this, 'callback_to_display_page') //callback
 		);

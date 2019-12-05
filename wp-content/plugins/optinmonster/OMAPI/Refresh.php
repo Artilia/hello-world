@@ -110,15 +110,13 @@ class OMAPI_Refresh {
 		$api = OMAPI_Api::build( 'v1', 'optins', 'GET' );
 
 		// Set additional flags.
-		$additional_data = array(
-			'wp' => $GLOBALS['wp_version'],
-		);
+		$this->api_args['wp']      = $GLOBALS['wp_version'];
+		$this->api_args['restUrl'] = esc_url_raw( get_rest_url() );
+		$this->api_args['homeUrl'] = esc_url_raw( home_url() );
 
-		if ( OMAPI::is_woocommerce_active() && version_compare( OMAPI::woocommerce_version(), '3.0.0', '>=' ) ) {
-			$additional_data['woocommerce'] = OMAPI::woocommerce_version();
+		if ( OMAPI::is_woocommerce_active() ) {
+			$this->api_args['wc'] = OMAPI_WooCommerce::version();
 		}
-
-		$api->set_additional_data( $additional_data );
 
 		$results = array();
 		$body    = $api->request( $this->api_args, false );
@@ -163,10 +161,11 @@ class OMAPI_Refresh {
 
 		// Update the option to remove stale error messages.
 		$option = $this->base->get_option();
-		$option['is_invalid']  = false;
-		$option['is_expired']  = false;
-		$option['is_disabled'] = false;
-		$option['siteIds']     = $sites;
+		$option['is_invalid']   = false;
+		$option['is_expired']   = false;
+		$option['is_disabled']  = false;
+		$option['siteIds']      = $sites['ids'];
+		$option['customApiUrl'] = $sites['customApiUrl'];
 
 		update_option( 'optin_monster_api', $option );
 

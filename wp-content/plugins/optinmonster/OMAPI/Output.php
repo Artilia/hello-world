@@ -143,8 +143,7 @@ class OMAPI_Output {
 	 * @since 1.0.0
 	 */
 	public function api_script() {
-
-		wp_enqueue_script( $this->base->plugin_slug . '-api-script', OPTINMONSTER_APIJS_URL, array( 'jquery' ), null );
+		wp_enqueue_script( $this->base->plugin_slug . '-api-script', $this->base->get_api_url(), array( 'jquery' ), null );
 
 		if ( version_compare( get_bloginfo( 'version' ), '4.1.0', '>=' ) ) {
 			add_filter( 'script_loader_tag', array( $this, 'filter_api_script' ), 10, 2 );
@@ -184,9 +183,8 @@ class OMAPI_Output {
 	 * @return string $url Amended URL with our ID attribute appended.
 	 */
 	public function filter_api_url( $url ) {
-
 		// If the handle is not ours, do nothing.
-		if ( false === strpos( $url, str_replace( 'https://', '', OPTINMONSTER_APIJS_URL ) ) ) {
+		if ( false === strpos( $url, str_replace( 'https://', '', $this->base->get_api_url() ) ) ) {
 			return $url;
 		}
 
@@ -388,7 +386,7 @@ class OMAPI_Output {
 
 		printf(
 			'<script type="text/javascript" src="%s" data-account="%s" data-user="%s" %s async></script>',
-			esc_url_raw( OPTINMONSTER_APIJS_URL ),
+			esc_url_raw( $this->base->get_api_url() ),
 			esc_attr( $option['accountId'] ),
 			esc_attr( $option['userId'] ),
 			defined( 'OPTINMONSTER_ENV' ) ? 'data-env="' . OPTINMONSTER_ENV . '"' : ''
@@ -672,8 +670,8 @@ class OMAPI_Output {
 			return array();
 		}
 
-		// Check WooCommerce is version 3.0.0 or greater.
-		if ( ! OMAPI::woocommerce_version_compare( '3.0.0' ) ) {
+		// Check if WooCommerce is the minimum version.
+		if ( ! OMAPI_WooCommerce::is_minimum_version() ) {
 			return array();
 		}
 

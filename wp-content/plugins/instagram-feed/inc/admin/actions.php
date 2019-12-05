@@ -107,7 +107,6 @@ function sbi_auto_save_tokens() {
 add_action( 'wp_ajax_sbi_auto_save_tokens', 'sbi_auto_save_tokens' );
 
 function sbi_delete_local_avatar( $username ) {
-    var_dump( 'deleting' );
 	$upload = wp_upload_dir();
 
 	$image_files = glob( trailingslashit( $upload['basedir'] ) . trailingslashit( SBI_UPLOADS_NAME ) . $username . '.jpg'  ); // get all matching images
@@ -586,8 +585,7 @@ function sbi_notices_html() {
 	$is_plugins_page = isset( $current_screen->id ) && $current_screen->id === 'plugins';
 	$page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : '';
 	//Only show to admins
-	if ( ! current_user_can( 'manage_options' )
-	     || ($page !== 'sb-instagram-feed'  && !$is_plugins_page) ) {
+	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
 	}
 
@@ -643,7 +641,15 @@ function sbi_notices_html() {
 	$should_show_new_user_discount = false;
 	$has_been_one_month_since_rating_dismissal = isset( $sbi_statuses_option['rating_notice_dismissed'] ) ? ((int)$sbi_statuses_option['rating_notice_dismissed'] + 30*24*60*60) < $current_time + 1: true;
 
-    if ( $in_new_user_month_range && $has_been_one_month_since_rating_dismissal ) {
+	if ( isset( $sbi_statuses_option['first_install'] ) && $sbi_statuses_option['first_install'] === 'from_update' ) {
+		global $current_user;
+		$user_id = $current_user->ID;
+		$ignore_new_user_sale_notice_meta = get_user_meta( $user_id, 'sbi_ignore_new_user_sale_notice' );
+		$ignore_new_user_sale_notice_meta = isset( $ignore_new_user_sale_notice_meta[0] ) ? $ignore_new_user_sale_notice_meta[0] : '';
+		if ( $ignore_new_user_sale_notice_meta !== 'always' ) {
+			$should_show_new_user_discount = true;
+		}
+	} elseif ( $in_new_user_month_range && $has_been_one_month_since_rating_dismissal ) {
 		global $current_user;
 		$user_id = $current_user->ID;
 		$ignore_new_user_sale_notice_meta = get_user_meta( $user_id, 'sbi_ignore_new_user_sale_notice' );

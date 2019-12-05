@@ -1,0 +1,253 @@
+# Copyright (C) 2017 popup-maker-advanced-theme-builder
+# This file is distributed under the same license as the popup-maker-advanced-theme-builder package.
+msgid ""
+msgstr ""
+"Project-Id-Version: popup-maker-advanced-theme-builder\n"
+"Report-Msgid-Bugs-To: https://wppopupmaker.com/support\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Language-Team: WP Popup Maker <support@wppopupmaker.com>\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: popup-maker-advanced-theme-builder.php:179
+msgid "Advanced Theme Builder"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:184
+msgid "Enable user preset colors?"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:189
+msgid "Color Preset #1"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:194
+msgid "Color Preset #2"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:199
+msgid "Color Preset #3"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:204
+msgid "Color Preset #4"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:209
+msgid "Color Preset #5"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:214
+msgid "Color Preset #6"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:275, popup-maker-advanced-theme-builder.php:632, popup-maker-advanced-theme-builder.php:702, popup-maker-advanced-theme-builder.php:759
+msgid "None"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:276, popup-maker-advanced-theme-builder.php:282, popup-maker-advanced-theme-builder.php:334, popup-maker-advanced-theme-builder.php:633, popup-maker-advanced-theme-builder.php:786, popup-maker-advanced-theme-builder.php:817
+msgid "Color"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:277, popup-maker-advanced-theme-builder.php:634, popup-maker-advanced-theme-builder.php:663, popup-maker-advanced-theme-builder.php:889, popup-maker-advanced-theme-builder.php:916
+msgid "Image"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:287, popup-maker-advanced-theme-builder.php:339, popup-maker-advanced-theme-builder.php:794, popup-maker-advanced-theme-builder.php:825
+msgid "Opacity"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:293, popup-maker-advanced-theme-builder.php:345
+msgid "%"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:503, popup-maker-advanced-theme-builder.php:668, popup-maker-advanced-theme-builder.php:894, popup-maker-advanced-theme-builder.php:921
+msgid "Select Image"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:504
+msgid "Full"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:505
+msgid "Large"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:506, popup-maker-advanced-theme-builder.php:952
+msgid "Medium"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:507
+msgid "Thumbnail"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:581
+msgid "Background"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:587
+msgid "Type"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:635
+msgid "Video"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:636
+msgid "Slideshow"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:637
+msgid "Parallax"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:657
+msgid "Background Image"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:680
+msgid "Full Size"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:688, popup-maker-advanced-theme-builder.php:937
+msgid "Edit"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:689, popup-maker-advanced-theme-builder.php:938
+msgid "Replace"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:698
+msgid "Repeat"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:703
+msgid "Tile"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:704
+msgid "Horizontally"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:705
+msgid "Vertically"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:716
+msgid "Position"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:720
+msgid "Left Top"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:721
+msgid "Left Center"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:722
+msgid "Left Bottom"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:723
+msgid "Center Top"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:724
+msgid "Center"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:725
+msgid "Center Bottom"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:726
+msgid "Right Top"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:727
+msgid "Right Center"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:728
+msgid "Right Bottom"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:739
+msgid "Attachment"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:743
+msgid "Scroll"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:744
+msgid "Fixed"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:755
+msgid "Size"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:760
+msgid "Fit"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:761
+msgid "Fill"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:781
+msgid "Background Color"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:812
+msgid "Background Overlay"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:843
+msgid "Background Video"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:848
+msgid "Video (MP4)"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:852, popup-maker-advanced-theme-builder.php:872
+msgid "Select Video"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:859, popup-maker-advanced-theme-builder.php:879
+msgid "Replace Video"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:868
+msgid "Video (WebM)"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:895
+msgid "Select a background image."
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:910
+msgid "Background Parallax"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:947
+msgid "Speed"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:951
+msgid "Fast"
+msgstr ""
+
+#: popup-maker-advanced-theme-builder.php:953
+msgid "Slow"
+msgstr ""

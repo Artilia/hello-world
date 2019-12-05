@@ -48,3 +48,31 @@ Stack trace:
 [01-Oct-2019 13:54:54 UTC] PHP Notice:  Trying to get property of non-object in /home3/artiliam/public_html/wp-content/mu-plugins/endurance-page-cache.php on line 394
 [01-Oct-2019 13:54:54 UTC] PHP Notice:  Trying to get property of non-object in /home3/artiliam/public_html/wp-content/mu-plugins/endurance-page-cache.php on line 394
 [01-Oct-2019 13:54:55 UTC] PHP Notice:  Trying to get property of non-object in /home3/artiliam/public_html/wp-content/mu-plugins/endurance-page-cache.php on line 394
+[16-Nov-2019 15:55:28 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'MailChimp_Service' does not have a method 'handleCouponTrashed' in /home3/artiliam/public_html/wp-includes/class-wp-hook.php on line 288
+[16-Nov-2019 15:55:49 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'MailChimp_Service' does not have a method 'handleCouponTrashed' in /home3/artiliam/public_html/wp-includes/class-wp-hook.php on line 288
+[16-Nov-2019 15:58:28 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'MailChimp_Service' does not have a method 'handleCouponTrashed' in /home3/artiliam/public_html/wp-includes/class-wp-hook.php on line 288
+[16-Nov-2019 19:02:53 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'MailChimp_Service' does not have a method 'handleCouponTrashed' in /home3/artiliam/public_html/wp-includes/class-wp-hook.php on line 288
+[23-Nov-2019 20:04:22 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'MailChimp_Service' does not have a method 'handleCouponTrashed' in /home3/artiliam/public_html/wp-includes/class-wp-hook.php on line 288
+[29-Nov-2019 14:04:17 UTC] PHP Fatal error:  Uncaught Error: Call to a member function has_session() on null in /home3/artiliam/public_html/wp-content/plugins/woocommerce-gateway-paypal-express-checkout/includes/class-wc-gateway-ppec-cart-handler.php:518
+Stack trace:
+#0 /home3/artiliam/public_html/wp-includes/class-wp-hook.php(288): WC_Gateway_PPEC_Cart_Handler->ensure_session(Object(WP))
+#1 /home3/artiliam/public_html/wp-includes/class-wp-hook.php(312): WP_Hook->apply_filters(NULL, Array)
+#2 /home3/artiliam/public_html/wp-includes/plugin.php(544): WP_Hook->do_action(Array)
+#3 /home3/artiliam/public_html/wp-includes/class-wp.php(742): do_action_ref_array('wp', Array)
+#4 /home3/artiliam/public_html/wp-includes/functions.php(1250): WP->main('')
+#5 /home3/artiliam/public_html/wp-blog-header.php(16): wp()
+#6 /home3/artiliam/public_html/index.php(17): require('/home3/artiliam...')
+#7 {main}
+  thrown in /home3/artiliam/public_html/wp-content/plugins/woocommerce-gateway-paypal-express-checkout/includes/class-wc-gateway-ppec-cart-handler.php on line 518
+[29-Nov-2019 14:04:21 UTC] PHP Fatal error:  Uncaught Error: Call to a member function has_session() on null in /home3/artiliam/public_html/wp-content/plugins/woocommerce-gateway-paypal-express-checkout/includes/class-wc-gateway-ppec-cart-handler.php:518
+Stack trace:
+#0 /home3/artiliam/public_html/wp-includes/class-wp-hook.php(288): WC_Gateway_PPEC_Cart_Handler->ensure_session(Object(WP))
+#1 /home3/artiliam/public_html/wp-includes/class-wp-hook.php(312): WP_Hook->apply_filters(NULL, Array)
+#2 /home3/artiliam/public_html/wp-includes/plugin.php(544): WP_Hook->do_action(Array)
+#3 /home3/artiliam/public_html/wp-includes/class-wp.php(742): do_action_ref_array('wp', Array)
+#4 /home3/artiliam/public_html/wp-includes/functions.php(1250): WP->main('')
+#5 /home3/artiliam/public_html/wp-blog-header.php(16): wp()
+#6 /home3/artiliam/public_html/index.php(17): require('/home3/artiliam...')
+#7 {main}
+  thrown in /home3/artiliam/public_html/wp-content/plugins/woocommerce-gateway-paypal-express-checkout/includes/class-wc-gateway-ppec-cart-handler.php on line 518
+[05-Dec-2019 23:13:12 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/artiliam/public_html/wp-includes/rest-api/endpoints/class-wp-rest-controller.php on line 295

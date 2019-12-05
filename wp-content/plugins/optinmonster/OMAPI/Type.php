@@ -21,70 +21,70 @@ if ( ! defined( 'ABSPATH' ) ) {
 class OMAPI_Type {
 
 	/**
-     * Holds the class object.
-     *
-     * @since 1.0.0
-     *
-     * @var object
-     */
-    public static $instance;
+	 * Holds the class object.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var object
+	 */
+	public static $instance;
 
 	/**
-     * Path to the file.
-     *
-     * @since 1.0.0
-     *
-     * @var string
-     */
-    public $file = __FILE__;
+	 * Path to the file.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var string
+	 */
+	public $file = __FILE__;
 
-    /**
-     * Holds the base class object.
-     *
-     * @since 1.0.0
-     *
-     * @var object
-     */
-    public $base;
+	/**
+	 * Holds the base class object.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var object
+	 */
+	public $base;
 
-    /**
-     * Primary class constructor.
-     *
-     * @since 1.0.0
-     */
-    public function __construct() {
+	/**
+	 * Primary class constructor.
+	 *
+	 * @since 1.0.0
+	 */
+	public function __construct() {
 
-	    // Set our object.
-	    $this->set();
+		// Set our object.
+		$this->set();
 
 		// Load actions and filters.
-        $this->type();
+		$this->type();
+	}
 
-    }
+	/**
+	 * Sets our object instance and base class instance.
+	 *
+	 * @since 1.0.0
+	 */
+	public function set() {
 
-    /**
-     * Sets our object instance and base class instance.
-     *
-     * @since 1.0.0
-     */
-    public function set() {
+		self::$instance = $this;
+		$this->base     = OMAPI::get_instance();
+		$this->view     = isset( $_GET['optin_monster_api_view'] ) ? stripslashes( $_GET['optin_monster_api_view'] ) : $this->base->get_view();
+	}
 
-        self::$instance = $this;
-        $this->base 	= OMAPI::get_instance();
-        $this->view     = isset( $_GET['optin_monster_api_view'] ) ? stripslashes( $_GET['optin_monster_api_view'] ) : $this->base->get_view();
+	/**
+	 * Loads the OptinMonster API post type.
+	 *
+	 * @since 1.0.0
+	 */
+	public function type() {
 
-    }
-
-    /**
-     * Loads the OptinMonster API post type.
-     *
-     * @since 1.0.0
-     */
-    public function type() {
-
-        register_post_type( 'omapi',
-	        array(
-				'labels' => apply_filters( 'optin_monster_api_post_type_labels',
+		register_post_type(
+			'omapi',
+			array(
+				'labels' => apply_filters(
+					'optin_monster_api_post_type_labels',
 					array(
 						'name'               => _x( 'Campaigns', 'post type general name', 'optin-monster-api' ),
 						'singular_name'      => _x( 'Campaign', 'post type singular name', 'optin-monster-api' ),
@@ -98,7 +98,7 @@ class OMAPI_Type {
 						'not_found'          => __( 'No Campaigns found', 'optin-monster-api' ),
 						'not_found_in_trash' => __( 'No Campaigns found in trash', 'optin-monster-api' ),
 						'parent_item_colon'  => '',
-						'menu_name'          => __( 'Campaigns', 'optin-monster-api' )
+						'menu_name'          => __( 'Campaigns', 'optin-monster-api' ),
 					)
 				),
 				'public'          => false,
@@ -106,10 +106,8 @@ class OMAPI_Type {
 				'capability_type' => 'post',
 				'has_archive'     => false,
 				'hierarchical'    => false,
-				'supports'        => array( 'title' )
+				'supports'        => array( 'title' ),
 			)
 		);
-
-    }
-
+	}
 }
