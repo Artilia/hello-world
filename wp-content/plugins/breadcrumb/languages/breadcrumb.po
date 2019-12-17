@@ -1,0 +1,299 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: breadcrumb\n"
+"POT-Creation-Date: 2019-07-03 01:10+0600\n"
+"PO-Revision-Date: 2019-07-03 01:10+0600\n"
+"Last-Translator: \n"
+"Language-Team: pickplugins\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-Basepath: ../includes\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPath-2: .\n"
+
+#: class-breadcrumb.php:440 functions.php:713
+msgid "404"
+msgstr ""
+
+#: class-settings-tabs.php:138
+msgid "Upload"
+msgstr ""
+
+#: class-settings-tabs.php:139
+msgid "Clear"
+msgstr ""
+
+#: class-settings-tabs.php:271
+msgid "Add"
+msgstr ""
+
+#: class-settings.php:26
+msgid "Breadcrumb"
+msgstr ""
+
+#: class-shortcodes.php:41 functions-settings.php:44
+msgid "You are here"
+msgstr ""
+
+#: class-shortcodes.php:115
+msgid "No title"
+msgstr ""
+
+#: functions-settings.php:40
+msgid "Breadcrumb front text"
+msgstr ""
+
+#: functions-settings.php:41
+msgid "Display custom text before breadcrumb."
+msgstr ""
+
+#: functions-settings.php:53
+msgid "Breadcrumb separator text"
+msgstr ""
+
+#: functions-settings.php:54
+msgid "You can display custom separator. ex: <code>&raquo;</code>"
+msgstr ""
+
+#: functions-settings.php:69
+msgid "Display last separator"
+msgstr ""
+
+#: functions-settings.php:70
+msgid "Display or hide last separator."
+msgstr ""
+
+#: functions-settings.php:75 functions-settings.php:141
+msgid "No"
+msgstr ""
+
+#: functions-settings.php:76 functions-settings.php:142
+msgid "Yes"
+msgstr ""
+
+#: functions-settings.php:90
+msgid "Breadcrumb link text limit by?"
+msgstr ""
+
+#: functions-settings.php:91
+msgid "You can limit link text by word or character"
+msgstr ""
+
+#: functions-settings.php:96
+msgid "Word"
+msgstr ""
+
+#: functions-settings.php:97
+msgid "Character"
+msgstr ""
+
+#: functions-settings.php:110
+msgid "Limit count"
+msgstr ""
+
+#: functions-settings.php:111
+msgid "Set custom limit value, number only."
+msgstr ""
+
+#: functions-settings.php:122
+msgid "Ending character"
+msgstr ""
+
+#: functions-settings.php:123
+msgid "Set custom Ending character, ex: ..."
+msgstr ""
+
+#: functions-settings.php:135
+msgid "Display \"Home\" on breadcrumb?"
+msgstr ""
+
+#: functions-settings.php:136
+msgid "You can hide or display Home on breadcrumb."
+msgstr ""
+
+#: functions-settings.php:156
+msgid "Custom home text"
+msgstr ""
+
+#: functions-settings.php:157
+msgid "You can set custom text for \"Home\""
+msgstr ""
+
+#: functions-settings.php:160 functions.php:11
+msgid "Home"
+msgstr ""
+
+#: functions-settings.php:171
+msgid "Hide breadcrumb on these pages"
+msgstr ""
+
+#: functions-settings.php:172
+msgid "You can hide breadcrumb on these pages."
+msgstr ""
+
+#: functions-settings.php:180
+msgid "Homepage"
+msgstr ""
+
+#: functions-settings.php:181
+msgid "Front page"
+msgstr ""
+
+#: functions-settings.php:182
+msgid "Posts page"
+msgstr ""
+
+#: functions-settings.php:194
+msgid "Hide on page by ID"
+msgstr ""
+
+#: functions-settings.php:195
+msgid "Page ids, use comma separate. ex: 12,15"
+msgstr ""
+
+#: functions-settings.php:208
+msgid "Current URL hash"
+msgstr ""
+
+#: functions-settings.php:209
+msgid "If you want to keep # on current url, otherwise keep empty"
+msgstr ""
+
+#: functions-settings.php:264
+msgid "Breadcrumb Themes"
+msgstr ""
+
+#: functions-settings.php:265
+msgid "Choose breadcrumb theme"
+msgstr ""
+
+#: functions-settings.php:302
+msgid "Breadcrumb font size"
+msgstr ""
+
+#: functions-settings.php:303
+msgid "Set custom font size"
+msgstr ""
+
+#: functions-settings.php:314
+msgid "Breadcrumb container padding"
+msgstr ""
+
+#: functions-settings.php:315
+msgid "Put custom padding size for breadcrumb container."
+msgstr ""
+
+#: functions-settings.php:329
+msgid "Breadcrumb container margin"
+msgstr ""
+
+#: functions-settings.php:330
+msgid "Put custom margin size for breadcrumb container."
+msgstr ""
+
+#: functions-settings.php:342
+msgid "Breadcrumb link background color"
+msgstr ""
+
+#: functions-settings.php:343
+msgid "Choose custom background color for links"
+msgstr ""
+
+#: functions-settings.php:354
+msgid "Breadcrumb link color"
+msgstr ""
+
+#: functions-settings.php:355
+msgid "Choose custom link color"
+msgstr ""
+
+#: functions-settings.php:367
+msgid "Breadcrumb separator color"
+msgstr ""
+
+#: functions-settings.php:368
+msgid "Choose custom separator color"
+msgstr ""
+
+#: functions-settings.php:442
+msgid "Get shortcode"
+msgstr ""
+
+#: functions-settings.php:492
+msgid "Custom CSS"
+msgstr ""
+
+#: functions-settings.php:493
+msgid "Add your own CSS."
+msgstr ""
+
+#: functions-settings.php:554
+msgid "Buy Premium"
+msgstr ""
+
+#: functions-settings.php:584
+msgid "Get support"
+msgstr ""
+
+#: functions.php:50
+msgid "Blog"
+msgstr ""
+
+#: functions.php:575
+msgid "Tag"
+msgstr ""
+
+#: functions.php:601
+msgid "Author"
+msgstr ""
+
+#: functions.php:649
+msgid "Year"
+msgstr ""
+
+#: functions.php:669
+msgid "Month"
+msgstr ""
+
+#: functions.php:692
+msgid "Date"
+msgstr ""
+
+#: menu/settings.php:96
+msgid "Changes Saved."
+msgstr ""
+
+#: menu/settings.php:117
+msgid "<i class=\"fas fa-laptop-code\"></i> Options"
+msgstr ""
+
+#: menu/settings.php:124
+msgid "<i class=\"fas fa-palette\"></i> Style"
+msgstr ""
+
+#: menu/settings.php:131
+msgid "<i class=\"fas fa-qrcode\"></i> Shortcodes"
+msgstr ""
+
+#: menu/settings.php:138
+msgid "<i class=\"fas fa-map\"></i> Custom CSS"
+msgstr ""
+
+#: menu/settings.php:145
+msgid "<i class=\"fas fa-map\"></i> Help & Support"
+msgstr ""
+
+#: menu/settings.php:169
+#, php-format
+msgid "%s Settings"
+msgstr ""
+
+#: menu/settings.php:215
+msgid "Save Changes"
+msgstr ""

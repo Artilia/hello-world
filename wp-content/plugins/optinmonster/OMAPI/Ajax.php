@@ -157,7 +157,7 @@ class OMAPI_Ajax {
 					\MailPoet\API\API::MP( 'v1' )->addSubscriber( $user, array( $list ) );
 				}
 			} catch ( Exception $e ) {
-				// Do nothing.
+				return wp_send_json_error( $e->getMessage(), 400 );
 			}
 		} else {
 			$userHelper = WYSIJA::get( 'user', 'helper' );

@@ -2,116 +2,27 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <style>
-        body {
-            padding: 15px;
-        }
 
-        .list-group-item.item {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            text-align: left;
-        }
-
-        .item-name {
-            display: inline-block;
-            flex: 1;
-        }
-
-        .item-list {
-            text-align: center;
-        }
-
-        .form-row.add-item-form {
-            margin-left: auto;
-            margin-right: auto;
-            display: flex;
-            flex-direction: row;
-        }
-
-        #newItemName {
-            flex: 1;
-        }
     </style>
 </head>
 <body style="margin: 0;">
-<div class="form-row add-item-form container">
-    <input id="newItemName" placeholder="Enter item name" type="text" class="form-control" />
-    <button id="addItem" class="btn btn-primary">Add Item</button>
-</div>
-<hr />
-<ul class="item-list container">
-    <i>Click Preview to execute the JavaScript code . . .</i>
-</ul>
+
 
 <script>
-  let items = [{
-    id: 1,
-    name: 'First item'
-  },{
-    id: 2,
-    name: 'Second item'
-  },{
-    id: 3,
-    name: 'Third item'
-  }
+var y;
+function modifyVariables(x){
+  var z = 5;
+  x += 2;
+  y += x + z;
+}
 
-  ];
-  let nextItemId = 2;
-
-  /*
-    TODO: The existing code uses functions called `addItem` and `deleteItem`, implement them.
-  */
-
-  function deleteItem(item) {
-    items = items.filter(function(obj) {
-      return obj.id !== item.id;
-    });
-    render();
-  }
-
-  function addItem(){
-    const newItemContainer = document.querySelector('#newItemName');
-    const newItem = newItemContainer.value;
-    if(typeof newItem !== "undefined" && newItem !== ""){
-      let lastId = 0;
-      items.map(function(obj){
-        if (obj.id > lastId) lastId = obj.id;
-      });
-      items.push({id: lastId+1, name: 'newItem'});
-      render();
-    }
-  }
-
-  function render() {
-    const container = document.querySelector('.item-list');
-
-    while (container.firstChild) {
-      container.removeChild(container.firstChild);
-    }
-
-    items.forEach(item => {
-      const itemNameElement = document.createElement('span');
-      itemNameElement.className = 'item-name';
-      itemNameElement.innerHTML = item.name;
-
-      const deleteButtonElement = document.createElement('button');
-      deleteButtonElement.className = 'delete-item btn btn-danger';
-      deleteButtonElement.innerHTML = 'Delete';
-      deleteButtonElement.onclick = () => deleteItem(item);
-
-      const itemElement = document.createElement('li');
-      itemElement.className = 'list-group-item item row';
-      itemElement.appendChild(itemNameElement);
-      itemElement.appendChild(deleteButtonElement);
-
-      container.appendChild(itemElement);
-    });
-  }
-
-  document.querySelector('#addItem').addEventListener('click', addItem);
-
-  render();
+var x = 1;
+var y = 2;
+var z = 3;
+modifyVariables(x);
+console.error(x);
+console.error(y);
+console.error(z);
 </script>
 </body>
 </html>

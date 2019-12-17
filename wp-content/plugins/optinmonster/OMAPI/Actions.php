@@ -296,7 +296,9 @@ class OMAPI_Actions {
 
 		// Fetch the SiteIds for this site, if we don't have them
 		if ( empty( $option['siteIds'] ) ) {
-			$option['siteIds'] = $this->base->sites->fetch();
+			$sites = $this->base->sites->fetch();
+			$option['siteIds']      = $sites['ids'];
+			$option['customApiUrl'] = $sites['customApiUrl'];
 
 			$changed = true;
 		}

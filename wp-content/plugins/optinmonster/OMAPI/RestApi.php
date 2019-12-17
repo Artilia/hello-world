@@ -111,7 +111,7 @@ class OMAPI_RestApi {
 		}
 
 		foreach ( $site_ids as $site_id ) {
-			if ( in_array( $site_id, $api_key_sites ) ) {
+			if ( in_array( $site_id, $api_key_sites['ids'] ) ) {
 				return true;
 			}
 		}

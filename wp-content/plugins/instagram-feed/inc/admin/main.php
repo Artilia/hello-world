@@ -742,7 +742,7 @@ function sb_instagram_settings_page() {
 								<p class="sbi_pro_tooltip"><?php _e( 'Upgrade to the Pro version to display Hashtag and Tagged feeds', 'instagram-feed' ); ?><i class="fa fa-caret-down" aria-hidden="true"></i></p>
 								<a href="https://smashballoon.com/instagram-feed/?utm_source=plugin-free&utm_campaign=sbi" target="_blank" class="sbi_lock"><i class="fa fa-rocket"></i><?php _e('Pro', 'instagram-feed'); ?></a>
 
-								<input readonly type="text" size="25" style="height: 32px; top: -2px; position: relative; box-shadow: none;" />
+								<input readonly type="text" size="25" style="height: 32px; top: -2px; position: relative; box-shadow: none;" disabled />
 								&nbsp;<a class="sbi_tooltip_link sbi_pro" href="JavaScript:void(0);"><?php _e( 'What is this?', 'instagram-feed' ); ?></a>
 
 								<p class="sbi_tooltip"><?php _e( 'Display posts from a specific hashtag instead of from a user', 'instagram-feed' ); ?></p>
@@ -755,7 +755,7 @@ function sb_instagram_settings_page() {
                                 <label class="sbi_radio_label" for="sb_instagram_type_tagged"><?php _e( 'Tagged:', 'instagram-feed' ); ?></label>
                             </div>
                             <div class="sbi_col sbi_two">
-                                <input readonly type="text" size="25" style="height: 32px; top: -2px; position: relative; box-shadow: none;" />
+                                <input readonly type="text" size="25" style="height: 32px; top: -2px; position: relative; box-shadow: none;" disabled />
                                 &nbsp;<a class="sbi_tooltip_link sbi_pro" href="JavaScript:void(0);"><?php _e( 'What is this?', 'instagram-feed' ); ?></a>
 
                                 <p class="sbi_tooltip"><?php _e( 'Display posts that your account has been tagged in.', 'instagram-feed' ); ?></p>
@@ -2577,7 +2577,7 @@ echo 'test not successful';
 			<img src="<?php echo SBI_PLUGIN_URL . 'img/instagram-pro-promo.png?2019'; ?>" alt="<?php esc_attr_e( 'Instagram Feed Pro', 'instagram-feed' ); ?>">
 		</a>
 
-		<p class="sbi_plugins_promo dashicons-before dashicons-admin-plugins"> <?php _e('Check out our other free plugins: <a href="https://wordpress.org/plugins/custom-facebook-feed/" target="_blank">Facebook</a> and <a href="https://wordpress.org/plugins/custom-twitter-feeds/" target="_blank">Twitter</a>.', 'instagram-feed' ); ?></p>
+		<p class="sbi_plugins_promo dashicons-before dashicons-admin-plugins"> <?php _e('Check out our other free plugins: <a href="https://wordpress.org/plugins/custom-facebook-feed/" target="_blank">Facebook</a>, <a href="https://wordpress.org/plugins/custom-twitter-feeds/" target="_blank">Twitter</a>, and <a href="https://wordpress.org/plugins/feeds-for-youtube/" target="_blank">YouTube</a>.', 'instagram-feed' ); ?></p>
 
 		<div class="sbi_share_plugin">
 			<h3><?php _e('Like the plugin? Help spread the word!', 'instagram-feed'); ?></h3>

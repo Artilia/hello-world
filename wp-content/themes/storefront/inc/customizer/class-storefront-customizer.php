@@ -42,7 +42,7 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 				'storefront_setting_default_values', $args = array(
 					'storefront_heading_color'           => '#333333',
 					'storefront_text_color'              => '#6d6d6d',
-					'storefront_accent_color'            => '#96588a',
+					'storefront_accent_color'            => '#000000',
 					'storefront_hero_heading_color'      => '#000000',
 					'storefront_hero_text_color'         => '#000000',
 					'storefront_header_background_color' => '#ffffff',

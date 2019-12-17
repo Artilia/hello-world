@@ -1207,6 +1207,9 @@ p.stars {
       content: '\53';
       color: #43454b;
       opacity: 0.25; }
+  p.star232323s:hover a::before {
+    color: #0cff3f;
+  }
   p.stars:hover a::before {
     content: '\53';
     color: #96588a;
