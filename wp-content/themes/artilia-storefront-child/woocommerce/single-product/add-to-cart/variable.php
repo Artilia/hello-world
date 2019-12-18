@@ -46,13 +46,21 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
                                 'product'   => $product,
                             ) );
 //                            echo end( $attribute_keys ) === $attribute_name ? wp_kses_post( apply_filters( 'woocommerce_reset_variations_link', '<a class="reset_variations" href="#">' . esc_html__( 'Clear', 'woocommerce' ) . '</a>' ) ) : '';
+                            if($attribute_name == "pa_color") :
                             ?>
+                            <p class="product-color-tooltip tooltip-wrapper">
+                                <span class="tooltip-header">Color</span>
+                                <br><span class="tooltip-content">The overall color is inspired by the submitted artwork, but we'd love to know what color direction you prefer.</span>
+                            </p>
+                            <?php endif; ?>
                         </td>
                     </tr>
 				<?php endforeach; ?>
 			</tbody>
 		</table>
+        <p class="framing-details-popup-click">Framing details</p>
         <p class="make-it-yours-form">Make it yours</p>
+        <p class="product-fixed-price-for-mobile">Final price:<br><span>$0.00</span></p>
 
 		<div class="single_variation_wrap">
 			<?php

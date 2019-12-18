@@ -211,6 +211,9 @@ body .gform_wrapper .gf_progressbar_wrapper .gf_progressbar:after{
     height: 0;
 }
 
+.product-fixed-price-for-mobile{
+    display:none;
+}
 .make-it-yours-form{
     background-color: #FFF776;
     border: none;
@@ -224,6 +227,73 @@ body .gform_wrapper .gf_progressbar_wrapper .gf_progressbar:after{
     line-height: 25px;
     font-weight: 600;
     letter-spacing: 0.3em;
+    font-family: "Open Sans", Open Sans;
+}
+
+@media screen and ( max-width: 782px ) {
+    .make-it-yours-form {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        width: 50%;
+    }
+    .product-fixed-price-for-mobile{
+        background-color: #B7FCF8;
+        border: none;
+        color: black;
+        padding: 15px 40px;
+        display: inline-block;
+        text-align: center;
+        font-size: 18px;
+        line-height: 25px;
+        font-family: "Open Sans", Open Sans;
+        text-transform: uppercase;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        margin: 0;
+        width: 50%;
+    }
+}
+
+
+.framing-details-popup-click{
+    color: #FC8C7A;
+    padding: 5px 0 25px 0;
+    text-align: left;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    font-family: "Open Sans", Open Sans;
+    cursor: pointer;
+}
+
+
+.product-color-tooltip.tooltip-wrapper{
+    background-color: #B7FCF8;
+    border: none;
+    color: black;
+    padding: 5px 8px;
+    text-align: left;
+    display: inline-block;
+    max-width: 200px;
+}
+
+.product-color-tooltip .tooltip-header{
+    color: black;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: "Open Sans", Open Sans;
+}
+
+.product-color-tooltip .tooltip-content{
+    color: black;
+    text-decoration: none;
+    font-size: 10px;
     font-family: "Open Sans", Open Sans;
 }
 
